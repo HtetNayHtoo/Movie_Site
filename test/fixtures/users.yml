@@ -7,7 +7,7 @@ one:
   password_digest: MyString
   phone: 1
   address: MyString
-  dob: 2022-05-18 19:03:00
+  dob: 2022-05-18 21:02:46
 
 two:
   name: MyString
@@ -16,4 +16,4 @@ two:
   password_digest: MyString
   phone: 1
   address: MyString
-  dob: 2022-05-18 19:03:00
+  dob: 2022-05-18 21:02:46

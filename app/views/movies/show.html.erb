@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @movie.price %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @movie.category %>
+</p>
+
+<p>
+  <strong>Poster img:</strong>
+  <% @movie.poster_img.each do |poster_img| %>
+    <div><%= link_to poster_img.filename, poster_img %></div>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>

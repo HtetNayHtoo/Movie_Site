@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  release_date: 2022-05-18 21:42:01
+  director: MyString
+  trailer_link: MyString
+  cast: MyString
+  rotten_tomatoe: MyString
+  imdb: 1.5
+
+two:
+  release_date: 2022-05-18 21:42:01
+  director: MyString
+  trailer_link: MyString
+  cast: MyString
+  rotten_tomatoe: MyString
+  imdb: 1.5
