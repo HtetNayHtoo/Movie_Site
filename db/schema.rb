@@ -9,19 +9,3 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2022_05_18_123300) do
-
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.string "email"
-    t.string "password_digest"
-    t.integer "phone"
-    t.string "address"
-    t.datetime "dob"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-end
