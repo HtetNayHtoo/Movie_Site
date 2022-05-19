@@ -1,12 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
-<table>
-  <thead>
+<table class="table table-striped-columns">
+  <thead class="table-dark">
     <tr>
       <th>Name</th>
-      <th>Type</th>
+      <th>User Type</th>
       <th>Email</th>
       <th>Password digest</th>
       <th>Phone</th>
@@ -28,9 +25,18 @@
         <td><%= user.address %></td>
         <td><%= user.dob %></td>
         <td><%= user.profile_img %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Operations
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><%= link_to 'Show', user, class: 'dropdown-item' %></li>
+              <li><%= link_to 'Edit', edit_user_path(user), class: "btn btn-secondary btn-sm dropdown-item" %></li>
+              <li><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm dropdown-item" %></li>
+            </ul>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, class: "btn btn-primary text-white" %>
