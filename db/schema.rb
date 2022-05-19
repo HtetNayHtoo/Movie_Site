@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2022_05_18_153001) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "user_type"
     t.string "email"
     t.string "password_digest"
     t.integer "phone"
