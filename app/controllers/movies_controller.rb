@@ -8,6 +8,8 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+    movie = Movie.find_by_id(params[:movie_id])
+    @movie_detail = movie.movie_detail
   end
 
   # GET /movies/new
@@ -25,6 +27,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
+        @movie.movie_details.create(movie_detail_params)
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
         format.json { render :show, status: :created, location: @movie }
       else
@@ -66,5 +69,9 @@ class MoviesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def movie_params
       params.require(:movie).permit(:title, :price, :category, poster_img: [])
+    end
+
+    def movie_detail_params
+      params.require(:movie).permit(:release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
     end
 end

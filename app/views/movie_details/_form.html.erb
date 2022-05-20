@@ -1,7 +1,7 @@
 <%= form_with(model: movie_detail) do |form| %>
   <% if movie_detail.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(movie_detail.errors.count, "error") %> prohibited this movie_detail from being saved:</h2>
+      <h2 class='form-control'><%= pluralize(movie_detail.errors.count, "error") %> prohibited this movie_detail from being saved:</h2>
 
       <ul>
         <% movie_detail.errors.each do |error| %>
@@ -11,37 +11,79 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :release_date %>
-    <%= form.datetime_select :release_date %>
+  <div class="field form-group row mb-3">
+    <%= form.label :title, class:'col-sm-2 col-form-label'%>
+    <div class="col-sm-10">
+      <%= form.text_field :title , class:"form-control col-md-4"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :director %>
-    <%= form.text_field :director %>
+  <div class="field form-group row mb-3">
+    <%= form.label :price, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= form.number_field :price, class:"form-control col-md-4" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :trailer_link %>
-    <%= form.text_field :trailer_link %>
+  <div class="field form-group row mb-3">
+    <%= form.label :category, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= form.text_field :category , class:"form-control col-md-4"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :cast %>
-    <%= form.text_field :cast %>
+  <div class="field form-group row mb-3">
+    <%= form.label :director, class:'col-sm-2 col-form-label' %>
+     <div class="col-sm-10">
+        <%= form.text_field :director, class:"form-control col-md-4" %>
+      </div>
   </div>
 
-  <div class="field">
-    <%= form.label :rotten_tomatoe %>
-    <%= form.text_field :rotten_tomatoe %>
+  <div class="field form-group row mb-3">
+    <%= form.label :trailer_link, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :trailer_link, class:"form-control col-md-4" %>
+    </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :imdb %>
-    <%= form.text_field :imdb %>
+  <div class="field form-group row mb-3">
+    <%= form.label :cast, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :cast, class:"form-control col-md-4" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field form-group row mb-3">
+    <%= form.label :rotten_tomatoe, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :rotten_tomatoe, class:"form-control col-md-4" %>
+    </div>
+  </div>
+
+  <div class="field form-group row mb-3 ">
+    <%= form.label :imdb, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :imdb, class:"form-control col-md-4" %>
+    </div>
+  </div>
+
+  <div class="field form-group row mb-3">
+    <%= form.label :poster_img, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.file_field :poster_img, multiple: true, class:"form-control-file" %>
+    </div>
+  </div>
+
+  <div class="field form-group row mb-3">
+    <%= form.label :release_date, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.datetime_select :release_date, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="actions form-group">
+    <%= form.submit class:"btn btn-outline-primary btn-lg form-control col-md-2"%>
+    <%= link_to 'Back', movie_details_path, class:"btn btn-outline-primary btn-lg form-control col-md-2" %>
   </div>
 <% end %>

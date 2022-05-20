@@ -18,7 +18,10 @@
 <p>
   <strong>Poster img:</strong>
   <% @movie.poster_img.each do |poster_img| %>
-    <div><%= link_to poster_img.filename, poster_img %></div>
+    <div>
+      <!--<%= link_to poster_img.filename, poster_img %>-->
+      <%= image_tag(poster_img) %>
+    </div>
   <% end %>
 </p>
 

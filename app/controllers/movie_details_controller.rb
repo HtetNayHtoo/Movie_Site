@@ -22,6 +22,7 @@ class MovieDetailsController < ApplicationController
   # POST /movie_details or /movie_details.json
   def create
     @movie_detail = MovieDetail.new(movie_detail_params)
+   
 
     respond_to do |format|
       if @movie_detail.save
