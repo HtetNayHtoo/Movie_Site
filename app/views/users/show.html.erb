@@ -1,46 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="col-md-3">
+  <p class="form-control">
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+</div>
 
-<p>
-  <strong>Type:</strong>
+<div class="col-md-3">
+  <p class="form-control">
+  <strong>User Type:</strong>
   <%= @user.user_type %>
-</p>
+  </p>
+</div>
 
-<p>
+<div class="col-md-3">
+  <p class="form-control">
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
+  </p>
+</div>
 
-<p>
+<div class="col-md-3">
+  <p class="form-control">
   <strong>Password digest:</strong>
   <%= @user.password_digest %>
-</p>
+  </p>
+</div>
 
-<p>
+<div class="col-md-3">
+  <p class="form-control">
   <strong>Phone:</strong>
   <%= @user.phone %>
-</p>
+  </p>
+</div>
 
-<p>
+<div class="col-md-3">
+  <p class="form-control">
   <strong>Address:</strong>
   <%= @user.address %>
-</p>
+  </p>
+</div>
 
-<p>
+<div class="col-md-3">
+  <p class="form-control">
   <strong>Dob:</strong>
   <%= @user.dob %>
-</p>
+  </p>
+</div>
 
-<p>
+<div class="col-md-3">
+  <p class="form-control">
   <strong>Profile img:</strong>
   <% @user.profile_img.each do |profile_img| %>
-    <div><%= link_to profile_img.filename, profile_img %></div>
+    <%= link_to profile_img.filename, profile_img %>
   <% end %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  </p>
+</div>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-sm btn-outline-secondary" %> |
+<%= link_to 'Back', users_path, class: "btn btn-sm btn-dark text-white" %>

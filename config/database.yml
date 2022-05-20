@@ -52,4 +52,4 @@ production:
   <<: *default
   database: production.movie
   username: root
-  password: hnin123
+  password: root
