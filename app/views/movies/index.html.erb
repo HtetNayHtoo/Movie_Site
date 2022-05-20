@@ -43,7 +43,10 @@
           <h5 class="card-title">Title : <%= movie.title %></h5>
           <p class="card-text">Category : <%= movie.category %></p>
           <p class="card-text">Price : <%= movie.price %></p>
-          <%= link_to 'Movie Details', movie_details_path, class: "card-link text-primary" %> <br/><br/>
+          <!--<% movie_detail_url.each do |p|%>-->
+              <%= link_to 'Movie Details', movie_details_path, class: "card-link text-primary" %>
+          <!--<% end %>-->
+           <br/><br/>
           <%= link_to 'Edit', edit_movie_path(movie) %> | <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %><br/><br/>
           <%= button_to 'Order', orders_path, class: "btn btn-primary" %>   
         </div>
