@@ -11,47 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="col-md-3">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :user_type %>
+  <div class="col-md-3 my-2">
+    <%= form.label :user_type %>
+    <br>
+     <%= form.select :user_type, [['Please select a user', nil], 'Admin', 'User'], {}, {class: 'form-control'}  %>
   </div>
 
-  <div class="field">
+  <div class="col-md-3">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="col-md-3 my-2">
     <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
+    <%= form.password_field :password_digest, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="col-md-3">
     <%= form.label :phone %>
-    <%= form.number_field :phone %>
+    <%= form.number_field :phone, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="col-md-3 my-2">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="col-md-3">
     <%= form.label :dob %>
-    <%= form.datetime_select :dob %>
+    <%= form.date_field :dob, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="col-md-3 mt-2 mb-3">
     <%= form.label :profile_img %>
-    <%= form.file_field :profile_img, multiple: true %>
+    <%= form.file_field :profile_img, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
