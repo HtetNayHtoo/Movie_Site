@@ -2,7 +2,7 @@
 
 <h1>Movie Details</h1>
 
-<table>
+<!---<table>
   <thead>
     <tr>
       <th>Release date</th>
@@ -32,4 +32,20 @@
   </tbody>
 </table>
 
-<br>
+<br>-->
+
+<% @movie_details.each do |movie_detail| %>
+<div class="media">
+  <% movie_detail.movie.poster_img.each do |poster_img| %>
+    <%= image_tag(poster_img, class:"align-self-start mr-3") %>
+  <% end %>
+  <div class="media-body">
+    <h5 class="mt-0"> <%= movie_detail.movie.title %> </h5>
+    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>Release Date : <%= movie_detail.release_date.strftime('%m/%d/%Y') %></p>
+    <p>Cast : <%= movie_detail.cast%></p>
+    <p>Director : <%= movie_detail.director%> </p>
+    <p>Trailer Link : <%= movie_detail.trailer_link %> </p>
+  </div>
+</div>
+<% end %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -28,7 +28,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <%= link_to"New Movie", new_movie_path%>
 
@@ -43,8 +43,9 @@
           <h5 class="card-title">Title : <%= movie.title %></h5>
           <p class="card-text">Category : <%= movie.category %></p>
           <p class="card-text">Price : <%= movie.price %></p>
-          <%= link_to 'Movie Details', movie_details_path, class: "card-link text-primary" %>
-          <%= button_to 'Order', orders_path, class: "btn btn-primary" %>
+          <%= link_to 'Movie Details', movie_details_path, class: "card-link text-primary" %> <br/><br/>
+          <%= link_to 'Edit', edit_movie_path(movie) %> | <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %><br/><br/>
+          <%= button_to 'Order', orders_path, class: "btn btn-primary" %>   
         </div>
     </div>
     <% end %>
