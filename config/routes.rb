@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: "password_resets#update"
 
   resources :orders
-  resources :comments
+ 
   resources :movie_details
-  resources :movies
+  resources :movies do
+    resources :comments
+  end
   resources :users
   root 'main#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

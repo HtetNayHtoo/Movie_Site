@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :set_movie, only: %i[  edit update destroy ]
 
   # GET /movies or /movies.json
   def index
@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+    @movie = Movie.find(params[:id])
   end
 
   # GET /movies/new

@@ -44,6 +44,11 @@
     <%= @movie.movie_detail.imdb.to_i %>
     </p>
     <p>Trailer Link : <%= @movie.movie_detail.trailer_link %> </p>
+    <p>
+      <strong>Comments:</strong>
+      <%= render @movie.comments.order(id: :desc) %>
+      <%= render partial: 'comments/cform', locals: {movie: @movie } %>
+    </p>
     <%= link_to 'Back', movies_path %>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<form action="<%= movie_comments_path(movie) %>" method="post" >
+<input type="hidden" name="authenticity_token">
+<textarea name="comment[content]" rows="8" cols="20"></textarea>
+<input type="submit" value="Submit">
+</form>
