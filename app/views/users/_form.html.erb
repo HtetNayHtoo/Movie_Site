@@ -11,48 +11,50 @@
     </div>
   <% end %>
 
-  <div class="col-md-3">
+ <div class="profile-center">
+   <div class="col">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="col-md-3 my-2">
+  <div class="col my-2">
     <%= form.label :user_type %>
     <br>
      <%= form.select :user_type, [['Please select a user', nil], 'Admin', 'User'], {}, {class: 'form-control'}  %>
   </div>
 
-  <div class="col-md-3">
+  <div class="col">
     <%= form.label :email %>
     <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="col-md-3 my-2">
-    <%= form.label :password_digest %>
-    <%= form.password_field :password_digest, class: "form-control" %>
+  <div class="col my-2">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="col-md-3">
+  <div class="col">
     <%= form.label :phone %>
     <%= form.number_field :phone, class: "form-control" %>
   </div>
 
-  <div class="col-md-3 my-2">
+  <div class="col my-2">
     <%= form.label :address %>
     <%= form.text_field :address, class: "form-control" %>
   </div>
 
-  <div class="col-md-3">
+  <div class="col">
     <%= form.label :dob %>
     <%= form.date_field :dob, class: "form-control" %>
   </div>
 
-  <div class="col-md-3 mt-2 mb-3">
+  <div class="col mt-2 mb-3">
     <%= form.label :profile_img %>
     <%= form.file_field :profile_img, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-primary" %>
+    <%= form.submit class: "btn btn-primary ml-3" %>
   </div>
+ </div>
 <% end %>

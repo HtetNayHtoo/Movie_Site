@@ -1,0 +1,16 @@
+<div class = "login-center">
+<h1>Forgot Password?</h1>
+
+<%= form_with url: password_reset_path do |form| %>
+
+  <div class="col">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Enter Email" %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit 'Reset Password', class: "btn btn-primary mt-3" %>
+  </div>
+
+<% end %>
+</div>

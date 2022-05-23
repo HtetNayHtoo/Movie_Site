@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-<table class="table table-striped-columns">
+<table class="table table-striped mt-5">
   <thead class="table-dark">
     <tr>
       <th>Name</th>
       <th>User Type</th>
       <th>Email</th>
-      <th>Password digest</th>
       <th>Phone</th>
       <th>Address</th>
       <th>Dob</th>
@@ -20,11 +18,10 @@
         <td><%= user.name %></td>
         <td><%= user.user_type %></td>
         <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
         <td><%= user.phone %></td>
         <td><%= user.address %></td>
         <td><%= user.dob %></td>
-        <td><%= user.profile_img %></td>
+        <td><%= image_tag user.profile_img, class:"img-width" if user.profile_img.attached? %></td>
         <td>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
