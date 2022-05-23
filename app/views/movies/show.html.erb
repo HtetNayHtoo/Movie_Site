@@ -39,7 +39,7 @@
     <p>Release Date : <%= @movie.movie_detail.release_date.strftime('%m/%d/%Y') %></p>
     <p>Cast : <%= @movie.movie_detail.cast%></p>
     <p>Director : <%= @movie.movie_detail.director%> </p>
-    <div class="star-rating" data-score=<%= @movie.movie_detail.imdb.to_i %>></div>
+    <p class="star-rating"></p>
     <p>
     <%= @movie.movie_detail.imdb.to_i %>
     </p>
@@ -48,12 +48,14 @@
   </div>
 </div>
 
-<script src='app\assets\javascripts\jquery.raty.js'>
+<script>
   $('.star-rating').raty({
-    path: '/assets/',
+    starOn: "http://wbotelhos.com/raty/lib/img/star-on.png",
+    starOff: "http://wbotelhos.com/raty/lib/img/star-off.png"
     readOnly: true,
     score: function () {
       return $(this).attr('data-score');
     }
   });
+
 </script>
