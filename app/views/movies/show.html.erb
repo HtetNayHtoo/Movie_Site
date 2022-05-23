@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<!--<p>
   <strong>Title:</strong>
   <%= @movie.title %>
 </p>
@@ -19,11 +19,41 @@
   <strong>Poster img:</strong>
   <% @movie.poster_img.each do |poster_img| %>
     <div>
-      <!--<%= link_to poster_img.filename, poster_img %>-->
+      <%= link_to poster_img.filename, poster_img %>
       <%= image_tag(poster_img) %>
     </div>
   <% end %>
 </p>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<%= link_to 'Back', movies_path %>-->
+
+<div class="media">
+  <% @movie.poster_img.each do |poster_img| %>
+    <%= image_tag(poster_img, class:"align-self-start mr-3", width: "50%", height: "50%" ) %>
+  <% end %>
+  
+  <div class="media-body">
+    <h5 class="mt-0"> <%= @movie.title %> </h5>
+    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p>Release Date : <%= @movie.movie_detail.release_date.strftime('%m/%d/%Y') %></p>
+    <p>Cast : <%= @movie.movie_detail.cast%></p>
+    <p>Director : <%= @movie.movie_detail.director%> </p>
+    <div class="star-rating" data-score=<%= @movie.movie_detail.imdb.to_i %>></div>
+    <p>
+    <%= @movie.movie_detail.imdb.to_i %>
+    </p>
+    <p>Trailer Link : <%= @movie.movie_detail.trailer_link %> </p>
+    <%= link_to 'Back', movies_path %>
+  </div>
+</div>
+
+<script src='app\assets\javascripts\jquery.raty.js'>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function () {
+      return $(this).attr('data-score');
+    }
+  });
+</script>
