@@ -48,10 +48,9 @@
   </div>
 </div>
 
-<script>
+<script src="jquery.raty.js">
   $('.star-rating').raty({
-    starOn: "http://wbotelhos.com/raty/lib/img/star-on.png",
-    starOff: "http://wbotelhos.com/raty/lib/img/star-off.png"
+    path: "/assets/"
     readOnly: true,
     score: function () {
       return $(this).attr('data-score');
