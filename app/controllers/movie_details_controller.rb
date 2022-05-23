@@ -8,6 +8,7 @@ class MovieDetailsController < ApplicationController
 
   # GET /movie_details/1 or /movie_details/1.json
   def show
+    @movie_detail = MovieDetail.find(params[:movie_id])
   end
 
   # GET /movie_details/new

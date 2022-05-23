@@ -8,8 +8,6 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
-    movie = Movie.find_by_id(params[:movie_id])
-    @movie_detail = movie.movie_detail
   end
 
   # GET /movies/new
@@ -27,9 +25,9 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        @movie.movie_details.create(movie_detail_params)
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
-        format.json { render :show, status: :created, location: @movie }
+          @movie.create_movie_detail(movie_detail_params)
+          format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
+          format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -41,7 +39,8 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
+        @movie.movie_detail.update(movie_detail_params)
+        format.html { redirect_to movies_path(@movie), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit, status: :unprocessable_entity }
