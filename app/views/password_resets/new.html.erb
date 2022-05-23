@@ -8,9 +8,10 @@
     <%= form.text_field :email, class: "form-control", placeholder: "Enter Email" %>
   </div>
 
-    <div class="actions">
+  <div class="actions">
     <%= form.submit 'Reset Password', class: "btn btn-primary mt-3" %>
   </div>
+  <%= link_to 'Back', login_path, class: "btn btn-dark text-white" %>
 
 <% end %>
 </div>
