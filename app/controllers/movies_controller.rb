@@ -9,10 +9,6 @@ class MoviesController < ApplicationController
   # GET /movies/1 or /movies/1.json
   def show
     @movie = MovieService.getMovieById(params[:id])
-<<<<<<< HEAD
-=======
-
->>>>>>> 5eef4bfdcf355ea92f48b24fa58d6d7baa404ec5
   end
 
   # GET /movies/new
