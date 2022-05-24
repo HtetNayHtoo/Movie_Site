@@ -45,7 +45,7 @@
     </p>
     <p>Trailer Link : <%= @movie.movie_detail.trailer_link %> </p>
     <p>
-      <strong>Comments:</strong>
+      <strong style="font-size:18px;">Comments:</strong>
       <%= render @movie.comments.order(id: :desc) %>
       <%= render partial: 'comments/cform', locals: {movie: @movie } %>
     </p>
