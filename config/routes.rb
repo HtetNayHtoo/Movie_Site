@@ -5,10 +5,18 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  get 'password/reset', to: "password_resets#new"
+  post 'password/reset', to: "password_resets#create"
+
+  get 'password/reset/edit', to: "password_resets#edit"
+  patch 'password/reset/edit', to: "password_resets#update"
+
   resources :orders
-  resources :comments
+ 
   resources :movie_details
-  resources :movies
+  resources :movies do
+    resources :comments
+  end
   resources :users
   root 'main#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
