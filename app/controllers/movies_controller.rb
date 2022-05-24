@@ -8,7 +8,11 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+<<<<<<< HEAD
     @movie = Movie.find(params[:id])
+=======
+    @movie = MovieService.getMovieById(params[:id])
+>>>>>>> rating
   end
 
   # GET /movies/new
@@ -23,11 +27,11 @@ class MoviesController < ApplicationController
   # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
-
+    @create_movie = MovieService.createMovie(@movie)
     respond_to do |format|
-      if @movie.save
+      if @create_movie
           @movie.create_movie_detail(movie_detail_params)
-          format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
+          format.html { redirect_to movies_path(@movie), notice: "Movie was successfully created." }
           format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,8 +42,9 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1 or /movies/1.json
   def update
+    @update_movie = MovieService.updateMovie(@movie, movie_params)
     respond_to do |format|
-      if @movie.update(movie_params)
+      if @update_movie
         @movie.movie_detail.update(movie_detail_params)
         format.html { redirect_to movies_path(@movie), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
@@ -52,7 +57,7 @@ class MoviesController < ApplicationController
 
   # DELETE /movies/1 or /movies/1.json
   def destroy
-    @movie.destroy
+    @destroy_movie = MovieService.destroyMovie(@movie)
 
     respond_to do |format|
       format.html { redirect_to movies_url, notice: "Movie was successfully destroyed." }
@@ -72,6 +77,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_detail_params
-      params.require(:movie).permit(:release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
+      params.require(:movie).permit(:desc, :release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
     end
 end

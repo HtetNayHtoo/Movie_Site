@@ -7,8 +7,17 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "bootstrap"
+import "jquery"
+import jquery from "jquery"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 FontAwesome.config.mutateApproach = 'sync'
+bootstrap.start()
+jqueryRaty.start()
+jquery.start()
+jquery_ujs.start()
+
+require("jquery")
