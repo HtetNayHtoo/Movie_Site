@@ -67,6 +67,6 @@ class MovieDetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_detail_params
-      params.require(:movie_detail).permit(:release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
+      params.require(:movie_detail).permit(:desc, :release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
     end
 end
