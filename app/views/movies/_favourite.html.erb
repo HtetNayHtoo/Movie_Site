@@ -1,11 +1,11 @@
-<% if !Fav.exists?(user_id: current_user.id, post_id: post.id) %>
-  <%= link_to post_likes_path(post.id), method: :post, remote: true, class:"like-btn" do %>
+<% if !Favourite.exists?(user_id: current_user.id, movie_id: movie.id) %>
+  <%= link_to movie_path(movie.id), method: :movie, remote: true, class:"like-btn" do %>
     <i class="fas fa-star star-icon1"></i>
   <% end %>
-  <span class="star-count1"><%= post.likes.count %></span>
+  <span class="star-count1"></span>
 <% else %>
-  <%= link_to post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true, class:"like-btn" do %>
+  <%= link_to movie_path(movie_id: movie.id, id: movie.likes[0].id), method: :delete, remote: true, class:"like-btn" do %>
     <i class="fas fa-star star-icon2"></i>
   <% end %>
-  <span class="star-count2"><%= post.likes.count %></span>
+  <span class="star-count2"></span>
 <% end %>

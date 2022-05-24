@@ -46,8 +46,8 @@
           <%= link_to 'Movie Details', movie, class: "card-link text-primary" %>
           <br/><br/>
           <%= link_to 'Edit', edit_movie_path(movie) %> | <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %><br/><br/>
-          <div class='star-btn' id="fav_<%= @movie.id %>">
-              <%= render "favourite", movie: @movie %>
+          <div class='star-btn' id="fav_<%= movie.id %>">
+              <%= render "favourite", movie: movie %>
           </div>
           <%= button_to 'Order', orders_path, class: "btn btn-primary" %>  
         </div>
