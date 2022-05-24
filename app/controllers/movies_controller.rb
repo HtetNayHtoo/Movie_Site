@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @create_movie
           @movie.create_movie_detail(movie_detail_params)
-          format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
+          format.html { redirect_to movies_path(@movie), notice: "Movie was successfully created." }
           format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -73,6 +73,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_detail_params
-      params.require(:movie).permit(:release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
+      params.require(:movie).permit(:desc, :release_date, :director, :trailer_link, :cast, :rotten_tomatoe, :imdb)
     end
 end
