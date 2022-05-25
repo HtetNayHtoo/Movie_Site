@@ -15,7 +15,7 @@ Rails.application.routes.draw do
  
   resources :movie_details
   resources :movies do
-    resources :comments,only: [:create,:destroy]
+    resources :comments,only: [:create,:destroy,:edit,:update]
   end
   resources :users
   root 'main#index'

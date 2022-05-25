@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment_id = @comment.id
     @comment.destroy
   end
-  private 
+  private
   def comment_params
     params.require(:comment).permit(:content).merge(movie_id: params[:movie_id])
   end

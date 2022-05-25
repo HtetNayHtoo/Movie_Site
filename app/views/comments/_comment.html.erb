@@ -3,10 +3,13 @@
 <article>
     <p style="font-size:16px;"><%= comment.content %></p>
     <small style="color:#1A1E8D;font-style:italic;">by <%= comment.user.email %></small>
-    <small style="color:#1A1E8D;margin:0 10px;"><%= time_ago_in_words(comment.created_at) %> ago</small>
+    
+    <small style="color:#1A1E8D;margin:0 10px;">Posted <%= time_ago_in_words(comment.created_at) %> ago</small>
+   
     <% if current_user && current_user == comment.user %>
-    <%= link_to "Delete" , movie_comment_path(@movie,comment),
-    method: :delete , remote: true ,class:'text-danger' %>
+        
+        <%= link_to "Delete" , movie_comment_path(@movie,comment),
+        method: :delete , remote: true ,class:'btn btn-sm btn-danger' %>
     <% else %>
     <% end %>
 </article>
