@@ -1,10 +1,10 @@
 class FavouritesController < ApplicationController
-    def create
+    def index
 
       favourite = Favourite.where(movie: Movie.find(params[:movie]), user: current_user)
       if favourite == []
             # Create the fav
-            @favourite = Favorite.create(user_id: current_user.id, movie_id: @movie.id)
+            @favourite = Favourite.create(user_id: current_user.id, movie_id: @movie.id)
             @favourite_exists = true
       else
            # Delete the fav
@@ -31,3 +31,4 @@ class FavouritesController < ApplicationController
 
     end
   end
+end

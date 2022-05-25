@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     @movies = Movie.all
+    @favourite_exists = Favourite.where(movie: @movie, user: current_user) == [] ? false : true
   end
 
   # GET /movies/1 or /movies/1.json
