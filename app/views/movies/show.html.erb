@@ -32,7 +32,7 @@
   <% @movie.poster_img.each do |poster_img| %>
     <%= image_tag(poster_img, class:"align-self-start mr-3", width: "300px", height: "300px" ) %><br/>
   <% end %>
-  
+  <%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
   <div class="media-body">
     <h5 class="mt-0"> <%= @movie.title %> </h5>
     
