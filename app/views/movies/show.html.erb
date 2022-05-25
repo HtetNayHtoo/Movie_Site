@@ -40,7 +40,7 @@
     <p>Release Date : <%= @movie.movie_detail.release_date.strftime('%m/%d/%Y') %></p>
     <p>Cast : <%= @movie.movie_detail.cast%></p>
     <p>Director : <%= @movie.movie_detail.director%> </p>
-    <p id="star-rating" data-score = <%= @movie.movie_detail.imdb %> ></p>
+    <div id="star-rating" data-score = <%= @movie.movie_detail.imdb.to_i %> ></div>
     <div>
       <% @movie.movie_detail.imdb.to_i.times do  %>
         <span class="glyphicon glyphicon-star"></span>
