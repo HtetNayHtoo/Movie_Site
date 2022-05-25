@@ -8,11 +8,4 @@ class ApplicationController < ActionController::Base
         @current_user = nil
       end
     end
-
-  def favorite_text
-    return @favourite_exists ? "Unfavorite" : "Favorite"
-  end
-
-  helper_method :favorite_text
-
 end

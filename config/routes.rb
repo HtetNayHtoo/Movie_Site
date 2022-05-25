@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :orders
   resources :comments
   resources :movie_details
-  resources :movies
+  resources :movies 
+  resources :favourites, only: [:create, :destroy]
   resources :users
-  resources :favourites
   root 'main#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

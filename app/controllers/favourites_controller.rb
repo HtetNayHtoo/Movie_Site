@@ -1,34 +1,23 @@
 class FavouritesController < ApplicationController
-    def index
-
-      favourite = Favourite.where(movie: Movie.find(params[:movie]), user: current_user)
-      if favourite == []
-            # Create the fav
-            @favourite = Favourite.create(user_id: current_user.id, movie_id: @movie.id)
-            @favourite_exists = true
-      else
-           # Delete the fav
-           favourite.destroy_all
-           @favourite_exists = false
-      end
-
-      respond_to do |format|
-        format.html {}
-        format.js {}
-
-
-      # @movie = Movie.find(params[:movie_id])
-      # if @movie.user_id != current_user.id   #You can register favorites other than your own posts
-      #   @favourite = Favourite.create(user_id: current_user.id, movie_id: @movie.id)
-      # end
+    def create
+        @favourite = current_user.favourites.new(favourite_params)
+        if !@favourite.save 
+          flash[:notice] = @favourite.errors.full_messages.to_sentence
+        end
+        redirect_to movies_path 
     end
 
     def destroy
 
-      # @movie = Movie.find(params[:movie_id])
-      # @favourite = Favourite.find_by(user_id: current_user.id, movie_id: @movie.id)
-      # @favourite.destroy
+      @favourite = current_user.favourites.find(params[:id])
+      movie = @favourite.movie 
+      @favourite.destroy
+      redirect_to movies_path
 
     end
-  end
+
+    private
+    def favourite_params
+      params.require(:favourite).permit(:movie_id)
+    end
 end
