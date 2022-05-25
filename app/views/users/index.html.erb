@@ -30,7 +30,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><%= link_to 'Show', user, class: 'dropdown-item' %></li>
               <li><%= link_to 'Edit', edit_user_path(user), class: "btn btn-secondary btn-sm dropdown-item" %></li>
-              <li><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm dropdown-item" %></li>
+              <li><%= button_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm dropdown-item" %></li>
             </ul>
           </div>
         </td>
