@@ -7,9 +7,9 @@
     <small style="color:#1A1E8D;margin:0 10px;">Posted <%= time_ago_in_words(comment.created_at) %> ago</small>
    
     <% if current_user && current_user == comment.user %>
-        <%= link_to "Delete" , movie_comment_path(@movie,comment),
+        <%= button_to "Delete" , movie_comment_path(comment),
         method: :delete, data: { confirm: 'Are you sure?' } , remote: true ,class:'btn btn-sm btn-danger' %>
-    <% else %>
+   
     <% end %>
 </article>
 </div>
