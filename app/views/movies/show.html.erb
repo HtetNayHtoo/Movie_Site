@@ -47,6 +47,9 @@
         <span class="glyphicon glyphicon-star"></span>
       <% end %>
     </div>
+     <% @movie.movie_detail.imdb.to_i.times do  %>
+        <span class="fas fa-star star-icon2" style="color:yellow"></span>
+      <% end %>
     <p>
     <%= @movie.movie_detail.imdb.to_i %>
     </p>
