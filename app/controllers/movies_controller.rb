@@ -21,13 +21,19 @@ class MoviesController < ApplicationController
   def edit
   end
 
+  def confirm
+    @movie = Movie.new(movie_params)
+    render :new if @movie.invalid?
+  end
+
   # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
     @create_movie = MovieService.createMovie(@movie)
-    @movie.user = current_user
+    
     respond_to do |format|
       if @create_movie
+          
           @movie.create_movie_detail(movie_detail_params)
           format.html { redirect_to movies_path(@movie), notice: "Movie was successfully created." }
           format.json { render :show, status: :created, location: @movie }
