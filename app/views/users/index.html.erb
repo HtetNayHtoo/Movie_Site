@@ -29,12 +29,30 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><%= link_to 'Show', user, class: 'dropdown-item' %></li>
-              <li><%= link_to 'Edit', edit_user_path(user), class: "btn btn-secondary btn-sm dropdown-item" %></li>
-              <li><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm dropdown-item" %></li>
+              <li><%= link_to 'Edit', edit_user_path(user), class: "dropdown-item" %></li>
+              <li>
+                <%= link_to 'Delete', '#', "data-toggle"=>"modal", "data-target" => "#deletepost_#{user.id}", class: "dropdown-item" %>
+              </li>
             </ul>
           </div>
         </td>
       </tr>
+      <div class="modal fade" id="deletepost_<%= user.id %>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">User Delete Confirmation</h5>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure to delete?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+              <%= button_to 'Delete', user, method: :delete, :class => 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </tbody>
 </table>
@@ -42,3 +60,6 @@
 <br>
 
 <%= link_to 'New User', new_user_path, class: "btn btn-primary text-white" %>
+
+   
+        

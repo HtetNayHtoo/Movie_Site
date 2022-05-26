@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
 
   # GET /users or /users.json
   def index
@@ -17,6 +18,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def confirm
+    @user = User.new(user_params)
+    render :new if @user.invalid?
   end
 
   # POST /users or /users.json
