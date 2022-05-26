@@ -45,7 +45,17 @@
           <p class="card-text">Price : <%= movie.price %></p>
           <%= link_to 'Movie Details', movie, class: "card-link text-primary" %>
           <br/><br/>
-          <%= link_to 'Edit', edit_movie_path(movie) %> | <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %><br/><br/>
+
+          <%= link_to 'Edit', edit_movie_path(movie) %> | <!--<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %>--><br/>    
+          <% favourite = current_user.favourites.find_by(movie: movie)%>
+          <% if favourite.nil? %>
+              <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success" %> <br/>
+          <% else %>
+              <%= button_to "Unfavourite", favourite_path(favourite), method: :delete, class: "btn btn-outline-danger" %> <br/>
+          <% end %> 
+          <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
+          <br/><br/>
+          <%= button_to "delete", {:controller => :movies,:action => 'destroy', :id => movie.id }, :method => :delete %>
           <%= button_to 'Order', orders_path, class: "btn btn-primary" %>  
         </div>
     </div>
