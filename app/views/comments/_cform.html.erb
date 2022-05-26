@@ -1,0 +1,5 @@
+<form action="<%= movie_comments_path(movie) %>" method="post" >
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<textarea name="comment[content]" rows="5" cols="15" class="form-control"></textarea>
+<input type="submit" value="Submit" class="btn btn-sm btn-primary mt-2" >
+</form>
