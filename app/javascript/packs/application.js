@@ -22,6 +22,12 @@ jqueryRaty.start()
 jquery.start()
 jquery_ujs.start()
 
+<<<<<<< HEAD
 require ("jquery")
 require ("jquery_ujs")
 
+=======
+require("jquery")
+require ("jquery_ujs")
+require ("raty-js")
+>>>>>>> rating

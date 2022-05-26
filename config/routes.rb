@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :orders
  
   resources :movie_details
-  resources :movies 
+  resources :movies do
+    resources :comments
+  end
   resources :favourites, only: [:create, :destroy]
   resources :users
   root 'main#index'
