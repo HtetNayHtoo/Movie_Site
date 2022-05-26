@@ -7,7 +7,12 @@ class CommentsController < ApplicationController
     end
       redirect_to movie_path(params[:movie_id])
   end
-  private 
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment_id = @comment.id
+    @comment.destroy
+  end
+  private
   def comment_params
     params.require(:comment).permit(:content).merge(movie_id: params[:movie_id])
   end
