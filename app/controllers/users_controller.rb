@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = UserService.index
   end
 
   # GET /users/1 or /users/1.json
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = UserService.new
   end
 
   # GET /users/1/edit
@@ -21,11 +21,12 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    @user = UserService.create_user(user_params)
+    isSave = UserService.create(user_params)
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to home_index_path, notice: "User was successfully created." }
+      if isSave
+        format.html { redirect_to login_path, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,8 +37,9 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    isUpdate = UserService.update(params[:id],user_params)
     respond_to do |format|
-      if @user.update(user_params)
+      if isUpdate
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -49,8 +51,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
 
+    UserService.delete(params[:id])
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
@@ -60,11 +62,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = UserService.set_user(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :user_type, :email, :password_digest, :phone, :address, :dob, profile_img: [])
+      params.require(:user).permit(:name, :user_type, :email, :password, :phone, :address, :dob, :profile_img)
     end
 end
