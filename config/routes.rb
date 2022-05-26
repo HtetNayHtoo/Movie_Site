@@ -14,9 +14,8 @@ Rails.application.routes.draw do
   resources :orders
  
   resources :movie_details
-  resources :movies do
-    resources :comments
-  end
+  resources :movies 
+  resources :favourites, only: [:create, :destroy]
   resources :users
   root 'main#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

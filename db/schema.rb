@@ -10,16 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_05_24_042401) do
-=======
-ActiveRecord::Schema.define(version: 2022_05_24_031529) do
->>>>>>> rating
-
-=======
 ActiveRecord::Schema.define(version: 2022_05_23_161908) do
->>>>>>> 5eef4bfdcf355ea92f48b24fa58d6d7baa404ec5
+5eef4bfdcf355ea92f48b24fa58d6d7baa404ec5
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
