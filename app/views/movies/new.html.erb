@@ -1,37 +1,4 @@
-<h1>New Movie</h1>
+<h1 class="align-center">New Movie</h1>
 
 <%= render 'form', movie: @movie %>
-
-  <div class="modal fade" id="confirmMovieModal" tabindex="-1" role="dialog" aria-labelledby="confirmMovieModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmMovieModaLabel">Confirm Create Movie!</h5>
-      </div>
-      <div id="confirmMovieDetails">
-      </div>
-     <div class="modal-body">
-        <div class="col-lg-12">
-        <p>
-        <strong>Movie Title:</strong>
-        <%= @movie.title %>
-        </p>
-
-        <p>
-        <strong>Category:</strong>
-        <%= @movie.category %>
-        </p>
-
-        <p>
-        <strong>Price:</strong>
-        <%= @movie.price %>
-        </p>
-        </div>
-      </div>
-      <div class='modal-footer'>
-        <button type="button" class="btn btn-secondary btn-lg close-modal" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-  </div>
 

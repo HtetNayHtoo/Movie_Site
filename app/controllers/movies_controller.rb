@@ -23,6 +23,10 @@ class MoviesController < ApplicationController
 
   def confirm
     @movie = Movie.new(movie_params)
+    if @movie
+      @movie.movie_detail = MovieDetail.new(movie_detail_params)
+    end
+    #@movie = @movie.movie_detail(movie_detail_params)
     render :new if @movie.invalid?
   end
 
@@ -33,7 +37,6 @@ class MoviesController < ApplicationController
     
     respond_to do |format|
       if @create_movie
-          
           @movie.create_movie_detail(movie_detail_params)
           format.html { redirect_to movies_path(@movie), notice: "Movie was successfully created." }
           format.json { render :show, status: :created, location: @movie }

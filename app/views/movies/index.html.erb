@@ -27,57 +27,175 @@
     <% end %>
   </tbody>
 </table> -->
-
-<%= link_to"New Movie", new_movie_path%>
+<!--<%= link_to"New Movie", new_movie_path, class: 'btn button1 button2 '%>
 
 <div class="card-deck card-columns-lg">
     
-    <% @movies.each do |movie| %>
+  <% @movies.each do |movie| %>
     <div class="card">
-        <% movie.poster_img.each do |poster_img| %>
-          <%= image_tag(poster_img, height: "300px", class:"card-img-top") %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title">Title : <%= movie.title %></h5>
-          <p class="card-text">Category : <%= movie.category %></p>
-          <p class="card-text">Price : <%= movie.price %></p>
-          <%= link_to 'Movie Details', movie, class: "card-link text-primary" %>
-          <br/><br/>
-
-          <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2' %> | <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2' %> <br/>   
-          <!--<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %>--> 
-          <% favourite = current_user.favourites.find_by(movie: movie)%>
-          <% if favourite.nil? %>
-              <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success" %> <br/>
-          <% else %>
-              <%= button_to "Unfavourite", favourite_path(favourite), method: :delete, class: "btn btn-outline-danger" %> <br/>
-          <% end %> 
-          <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
-          <br/><br/>
-          <!--<%= button_to "delete", {:controller => :movies,:action => 'destroy', :id => movie.id }, :method => :delete %>-->
-          <%= button_to 'Order', orders_path, class: "btn btn-primary" %>  
-        </div>
+      <% movie.poster_img.each do |poster_img| %>
+        <%= image_tag(poster_img, style: "width:200px; height:300px;", class:"card-img-top") %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">Title : <%= movie.title %></h5>
+        <p class="card-text">Category : <%= movie.category %></p>
+        <p class="card-text">Price : <%= movie.price %></p>
+        <%= link_to 'Movie Details', movie, class: "card-link text-primary" %>
+        <br/><br/>
+        <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2' %> | <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2' %> <br/>   
+        <!--<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %> 
+        <% favourite = current_user.favourites.find_by(movie: movie)%>
+        <% if favourite.nil? %>
+            <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success" %> <br/>
+        <% else %>
+            <%= button_to "Unfavourite", favourite_path(favourite), method: :delete, class: "btn btn-outline-danger" %> <br/>
+        <% end %> 
+        <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
+        <br/><br/>
+        <!--<%= button_to "delete", {:controller => :movies,:action => 'destroy', :id => movie.id }, :method => :delete %>
+        <%= button_to 'Order', orders_path, class: "btn btn-primary" %>  
+      </div>
     </div>
 
     <div class="modal fade" id="deletepost_<%= movie.id %>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Movie Delete Confirmation</h5>
-            </div>
-            <div class="modal-body">
-              <p>Are you sure to delete?</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn button1">Cancel</a>
-                <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn button1 button2' %>
-            </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Movie Delete Confirmation</h5>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure to delete?</p>
+              </div>
+              <div class="modal-footer">
+                  <a href="#" data-dismiss="modal" class="btn button1">Cancel</a>
+                  <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn button1 button2 ' %>
+              </div>
+          </div>
       </div>
-    </div>
     </div>
   <% end %>
 
+</div>-->
+
+<%= link_to"New Movie", new_movie_path, class: 'btn button1 button2 '%>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="row">
+      <% @movies.each do |movie|%>
+          <div class="thumbnail mt-3">
+            <% movie.poster_img.each do |poster_img| %>
+              <%= link_to (image_tag(poster_img, style: "height:300px;", class: "img-thumbnail mb-3")),movie %>
+              <!--<%= image_tag(poster_img, style: "width:200px; height:300px;", class:"image") %>-->
+            <% end %>
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <td colspan="2"><h5 class="card-title">Title : <%= movie.title %></h5></td></td>
+                </tr>
+                <tr>
+                <td colspan="2"><p class="card-text">Category : <%= movie.category %></p></td>
+                </tr>
+                <tr>  
+                <td colspan="2"><p class="card-text">Price : <%= movie.price %></p></td>
+                </tr>
+                <tr>
+                  <td><%= link_to 'Movie Details', movie, class: "btn btn-outline-success" %></td>
+                  <td><% favourite = current_user.favourites.find_by(movie: movie)%>
+                    <% if favourite.nil? %>
+                        <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success" %> <br/>
+                    <% else %>
+                        <%= button_to "Unfavourite", favourite_path(favourite), method: :delete, class: "btn btn-outline-danger" %>
+                    <% end %>
+                  </td>
+                </tr> 
+                <tr>
+                <td colspan="2"><i class="fas fa-star star-icon1"><%= movie.favourites.count %></i></td>
+                </tr>
+                <tr>
+                <td colspan="2"><%= button_to 'Order', orders_path, class: "btn btn-primary" %> </td>
+                </tr>
+                <tr>
+                <td colspan="2"><%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2' %> | <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2' %> </td>
+                </tr>
+                <!--<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %>--> 
+                <!--<%= button_to "delete", {:controller => :movies,:action => 'destroy', :id => movie.id }, :method => :delete %>-->
+              </table>
+            </div>
+          </div>
+        
+
+
+        <div class="modal fade" id="deletepost_<%= movie.id %>">
+          <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Movie Delete Confirmation</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure to delete?</p>
+                  </div>
+                  <div class="modal-footer">
+                      <a href="#" data-dismiss="modal" class="btn button1">Cancel</a>
+                      <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn button1 button2 ' %>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
   </div>
+</div>
+
+<!--<div class="row">
+  <% @movies.each do |movie|%>
+
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail mt-3">
+        <% movie.poster_img.each do |poster_img| %>
+          <%= link_to (image_tag(poster_img, style: "height:350px;", class: "img-thumbnail mb-3")),movie %>
+          <!--<%= image_tag(poster_img, style: "width:200px; height:300px;", class:"image") %>
+        <% end %>
+        <h5 class="card-title">Title : <%= movie.title %></h5>
+        <p class="card-text">Category : <%= movie.category %></p>
+        <p class="card-text">Price : <%= movie.price %></p>
+        <%= link_to 'Movie Details', movie, class: "btn btn-outline-success" %>
+        <% favourite = current_user.favourites.find_by(movie: movie)%>
+        <% if favourite.nil? %>
+            <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success" %> <br/>
+        <% else %>
+            <%= button_to "Unfavourite", favourite_path(favourite), method: :delete, class: "btn btn-outline-danger" %>
+        <% end %> 
+        <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
+        <br/><br/>
+        <%= button_to 'Order', orders_path, class: "btn btn-primary" %>  <br/>
+        <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2' %> | <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2' %>  
+        <!--<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %> 
+        <!--<%= button_to "delete", {:controller => :movies,:action => 'destroy', :id => movie.id }, :method => :delete %>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deletepost_<%= movie.id %>">
+      <div class="modal-dialog">
+        <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Movie Delete Confirmation</h5>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure to delete?</p>
+              </div>
+              <div class="modal-footer">
+                  <a href="#" data-dismiss="modal" class="btn button1">Cancel</a>
+                  <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn button1 button2 ' %>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>-->
 
 
   
