@@ -8,9 +8,13 @@ class CommentsController < ApplicationController
       redirect_to movie_path(params[:movie_id])
   end
   def destroy
-    @comment = current_user.comments.find(params[:id])
-    @comment_id = @comment.id
-    @comment.destroy
+      @comment = current_user.comments.find(params[:id])
+      @comment_id = @comment.id
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to movies_url, notice: "Comment was successfully destroyed." }
+        format.json { head :no_content }
+      end
   end
   private
   def comment_params
