@@ -39,8 +39,7 @@
 
   <div class="col mt-2 mb-3">
     <%= form.label :profile_img %>
-    <%= form.file_field :profile_img, value: @user.profile_img, class: "form-control" %>
-    <%= image_tag @user.profile_img, class:"img-width" if @user.profile_img.attached? %>
+    <%= form.file_field :profile_img, class: "form-control", direct_upload: true, :accept => "image/x-png,image/gif,image/jpeg" %>
   </div>
 
     <%= link_to 'Back', signup_path, class: "btn btn-dark text-white" %>
