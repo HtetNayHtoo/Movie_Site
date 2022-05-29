@@ -11,11 +11,9 @@ class CommentsController < ApplicationController
       @comment = current_user.comments.find(params[:id])
       @comment_id = @comment.id
       @comment.destroy
-      respond_to do |format|
-        format.html { redirect_to movies_url, notice: "Comment was successfully destroyed." }
-        format.json { head :no_content }
-      end
+      redirect_back(fallback_location: movies_path)
   end
+
   private
   def comment_params
     params.require(:comment).permit(:content).merge(movie_id: params[:movie_id])

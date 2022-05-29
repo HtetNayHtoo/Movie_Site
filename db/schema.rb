@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_161908) do
-5eef4bfdcf355ea92f48b24fa58d6d7baa404ec5
+ActiveRecord::Schema.define(version: 2022_05_29_052550) do
+
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_161908) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "movie_id", null: false
     t.bigint "user_id", null: false
-    t.text "content"
+    t.string "content"
     t.index ["movie_id"], name: "index_comments_on_movie_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 2022_05_23_161908) do
     t.bigint "movie_id", null: false
     t.index ["movie_id"], name: "index_favourites_on_movie_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "likeable_type"
+    t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
+    t.index ["likeable_id"], name: "index_likes_on_likeable_id"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "movie_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -113,6 +125,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_161908) do
   add_foreign_key "comments", "users"
   add_foreign_key "favourites", "movies"
   add_foreign_key "favourites", "users"
+  add_foreign_key "likes", "users"
   add_foreign_key "movie_details", "movies"
   add_foreign_key "orders", "movies"
   add_foreign_key "orders", "users"
