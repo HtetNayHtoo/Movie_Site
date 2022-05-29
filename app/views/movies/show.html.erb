@@ -47,6 +47,7 @@
     </div><br/>
     <p class="fs-1"><i class="fa-solid fa-tomato" style="color:red"></i><%= @movie.movie_detail.rotten_tomatoe %></p>
     <p>Trailer Link : <%= @movie.movie_detail.trailer_link %> </p>
+    
     <p>
       <strong style="font-size:18px;">Comments:</strong>
       <%= render @movie.comments.order(id: :desc) %>

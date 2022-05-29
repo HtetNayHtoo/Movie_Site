@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: "password_resets#update"
 
   resources :orders
- 
+ resources :likes , only: [:create,:destroy]
   resources :movie_details
   resources :movies do
-    resources :comments,only: [:create,:destroy]
+    resources :comments,only: [:create,:destroy,:vote] 
   end
   resources :favourites, only: [:create, :destroy]
   resources :users
