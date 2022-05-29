@@ -1,5 +1,83 @@
-<%= render 'form', user: @user %>
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="profile-center">
+  <div class="col">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="col my-2">
+    <%= form.label :user_type %>
+    <br>
+     <%= form.select :user_type, [['Please select a user', nil], 'Admin', 'User'], {}, {class: 'form-control'}  %>
+  </div>
+
+  <div class="col">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="col my-2">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="col">
+    <%= form.label :phone %>
+    <%= form.number_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="col my-2">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="col">
+    <%= form.label :dob %>
+    <%= form.date_field :dob, class: "form-control" %>
+  </div>
+
+  <div class="col mt-2 mb-3">
+    <%= form.label :profile_img %>
+    <%= form.file_field :profile_img, class: "form-control" %>
+  </div>
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editpost_<%= @user.id %>">
+    Update
+  </button>
+
+</div>
+
+<div class="modal fade" id="editpost_<%= @user.id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User Update Confirmation</h5>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to Update?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+        <%= button_to 'Update',  edit_user_path(@user), :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
 
 <div class="show-back">
-<%= link_to 'Back', @user, class: "btn btn-sm btn-dark text-white" %>
+<%= link_to 'Back', @user, class: "btn btn-dark text-white" %>
 </div>

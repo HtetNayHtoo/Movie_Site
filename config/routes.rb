@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     resources :comments,only: [:create,:destroy,:vote] 
   end
   resources :favourites, only: [:create, :destroy]
-  resources :users
+  resources :movies
+  resources :users do
+    collection do
+      post :confirm
+    end
+  end
   root 'main#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
