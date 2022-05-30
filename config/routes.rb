@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: "password_resets#edit"
   patch 'password/reset/edit', to: "password_resets#update"
 
+  get 'order/movie/:movie_id', to: "orders#create", as: 'order/movie'
   resources :orders
  resources :likes , only: [:create,:destroy]
   resources :movie_details
   resources :movies do
+    resources :orders
     resources :comments,only: [:create,:destroy,:vote] 
   end
   resources :favourites, only: [:create, :destroy]
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+
   root 'main#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
