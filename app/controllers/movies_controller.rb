@@ -5,16 +5,19 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @favourite_exists = Favourite.where(movie: @movie, user: current_user) == [] ? false : true
+    @movies = Movie.where(params[:category])
   end
 
   # GET /movies/1 or /movies/1.json
   def show
+    @movies = Movie.all
     @movie = MovieService.getMovieById(params[:id])
   end
 
   # GET /movies/new
   def new
     @movie = Movie.new
+    @movies = Movie.all
   end
 
   # GET /movies/1/edit
@@ -22,6 +25,7 @@ class MoviesController < ApplicationController
   end
 
   def confirm
+    @movies = Movie.all
     @movie = Movie.new(movie_params)
     if @movie
       @movie.movie_detail = MovieDetail.new(movie_detail_params)

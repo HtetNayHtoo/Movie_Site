@@ -14,9 +14,12 @@
             Category
           </a>
           <ul class="dropdown-menu" aria-labelledby="navMenu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+           <% @movies.collect(&:category).uniq.each do |category|%>
+              <li>
+                <!--<a class="dropdown-item"><%= category %></a>-->
+                <%= link_to category, movie(:category), class: "dropdown-item"%>
+              </li>
+            <% end %>
           </ul>
         </li>
         <li class="nav-item ms-5">
