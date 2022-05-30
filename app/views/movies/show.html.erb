@@ -26,16 +26,16 @@
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>-->
 
-<div class="media">
+<!--<div class="media">
   <% @movie.poster_img.each do |poster_img| %>
     <%= image_tag(poster_img, class:"align-self-start mr-3", width: "300px", height: "300px" ) %><br/>
   <% end %>
-  <!---<%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>-->
+  <!---<%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
   <div class="media-body">
     <h5 class="mt-0"> <%= @movie.title %> </h5>
     
     <p>Desc: <%= @movie.movie_detail.desc%></p>
-    <p>Release Date : <%= @movie.movie_detail.release_date.strftime('%m/%d/%Y') %></p>
+    <p>Release Date : <%= @movie.movie_detail.release_date %></p>
     <p>Cast : <%= @movie.movie_detail.cast%></p>
     <p>Director : <%= @movie.movie_detail.director%> </p>
     <div>
@@ -52,10 +52,10 @@
     </p>
     <%= link_to 'Back', movies_path %>
   </div>
-</div>
+</div>-->
 
 
-<div class="panel panel-primary">
+<!--<div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
        <div class="col-md-4">
@@ -112,4 +112,47 @@
        </div>
     </div>
   </div>
+</div>-->
+
+
+
+<div class="card mb-3" style="max-width: 100%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <% @movie.poster_img.each do |poster_img| %>
+          <%= image_tag(poster_img, class: "img-thumbnail") %>
+        <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><strong> Title : </strong><%= @movie.title %></h5>
+        <p class="card-text"><strong>Description : </strong><%= @movie.movie_detail.desc%>.</p>
+        <p class="card-text"><strong>Director : </strong><%= @movie.movie_detail.director%></small></p>
+        <p class="card-text"><strong>Cast : </strong><%= @movie.movie_detail.cast%></small></p>
+        <p class="card-text">
+          <div>
+              <% @movie.movie_detail.imdb.to_i.times do  %>
+              <span class="fas fa-star star-icon2" style="color:yellow"></span>
+              <% end %>
+          </div>
+        </p>
+        <p class="card-text fs-1 text-danger">
+          <i class="fa-solid fa-tomato" style="color:red"></i>
+          <%= @movie.movie_detail.rotten_tomatoe %>
+        </p>
+        <div style="width:200px; height:200px">
+       
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <p>
+    <strong style="font-size:18px;">Comments:</strong>
+    <%= render @movie.comments.order(id: :desc) %>
+    <%= render partial: 'comments/cform', locals: {movie: @movie } %>
+  </p>
+  <%= link_to 'Back', movies_path, class:"btn button1 button2"%>
 </div>

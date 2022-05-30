@@ -1,9 +1,5 @@
 <h1>Editing Movie</h1>
 
-<!--<%= render 'form', movie: @movie %>
--->
-
-
 <%= form_with(model: @movie) do |form| %>  
   <% if @movie.errors.any? %>
     <div id="error_explanation">
@@ -98,7 +94,7 @@
 
         <div class="actions form-group">
             <!--<%= form.submit class:"btn btn-primary" %>-->
-            <%= link_to 'Update', 'movie', "data-toggle"=>"modal", "data-target" => "#editpost_#{@movie.id}", :class=>'btn button1 button2'%>
+            <%= link_to 'Update', 'movie', "data-toggle"=>"modal", "data-target" => "#editpost_#{@movie.id}", :class=>'btn btn-primary'%>
             <!--<%= link_to 'Create Movie', 'new_movie_path', "data-toggle"=>"modal", "data-target" => "#confirmMovieModal",:class=>'btn button1 button2' %>-->
             <%= link_to 'Back', movies_path, class:"btn btn-primary" %>
         </div>
@@ -115,8 +111,9 @@
                     <p>Are You Sure</p>
                 </div>
                 <div class="modal-footer">
+                    <%= form.submit class:"btn btn-primary" %>
                     <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
-                    <%= button_to 'Update',  edit_movie_path(@movie), :class => 'btn btn-primary' %>
+                    <!--<%= button_to 'Update',  movie_path(@movie), :class => 'btn btn-primary' %>-->
                 </div>
             </div>
         </div>

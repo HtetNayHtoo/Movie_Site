@@ -98,13 +98,6 @@
       <%= @movie.movie_detail.release_date %>
       </p>
 
-      <p>
-      <strong>Poster Image:</strong>
-      <% @movie.poster_img.each do |poster_img| %>
-          <%= image_tag(poster_img) %>
-      <% end %>
-      </p>
-
       <%= form_with(model: @movie, local: true) do |f| %>
         <%= f.hidden_field :title %>
         <%= f.hidden_field :category %>
@@ -115,11 +108,9 @@
         <%= f.hidden_field :trailer_link %>
         <%= f.hidden_field :imdb%>
         <%= f.hidden_field :rotten_tomatoe%>
-        <%= f.hidden_field :poster_img%>
-        <!--<%= f.label :poster_img, class:'col-sm-2 col-form-label' %> --> 
-        <!--<%= f.file_field :poster_img, multiple: true, class:"form-control-file" %> <br/>-->
         <%= f.hidden_field :release_date%>
-        <%= f.submit "Submit", class: 'btn button1 button2' %>
+        <%= f.file_field :poster_img, multiple: true, class:"form-control-file" %> <br/>
+        <%= f.submit class: 'btn button1 button2' %>
         <%= link_to 'Back', new_movie_path, class: 'btn button1 button2' %>
       <% end %>
       </div>
