@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="profile-center">
+  <div class="field col">
     <%= form.label :total_price %>
-    <%= form.number_field :total_price %>
+    <%= form.number_field :total_price, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field col my-3">
     <%= form.label :qty %>
-    <%= form.number_field :qty %>
+    <%= form.number_field :qty, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field col">
     <%= form.label :deliver_date %>
-    <%= form.datetime_select :deliver_date %>
+    <%= form.date_field :deliver_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field col my-3">
     <%= form.label :deliver_flg %>
     <%= form.check_box :deliver_flg %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
   </div>
 <% end %>
