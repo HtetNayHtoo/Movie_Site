@@ -14,9 +14,16 @@
             Category
           </a>
           <ul class="dropdown-menu" aria-labelledby="navMenu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+           <% @movies.all.collect(&:category).uniq.each do |category|%>
+              <li class="dropdown-item">
+                <%= link_to category, movies_path(cate: category) %>
+              </li>
+            <% end %>
+            <!--<% @movies.each do |movie|%>
+              <li class="dropdown-item">
+                <%= link_to movie.category, movies_path(cate: movie.category) %>
+              </li>
+            <% end %>-->
           </ul>
         </li>
         <li class="nav-item ms-5">
@@ -30,10 +37,17 @@
            <%= link_to 'User List', users_path, class: "btn btn-sm btn-info text-white" %>
         </li>
        <% end %>
-         <li class="nav-item ms-5">
+       <li>
+        <%= form_tag(movies_path, :method => "get") do %>
+          <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>-->
+          <%= text_field_tag :search, params[:search], :placeholder => "Search"%>
+          <%= submit_tag "Search", class:"btn btn-primary btn-sm float-end"%>
+        <% end %>
+        </li>
+        <li class="nav-item ms-5">
            <%= link_to 'Log Out', logout_path, class: "btn btn-sm btn-danger text-white" %>
         </li>
-        
       </ul>
     </div>
   </div>

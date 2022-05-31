@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @movies = Movie.all
   end
 
   def create

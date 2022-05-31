@@ -4,28 +4,63 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     @movies = Movie.all
+    # if @movies
+    #   cate = params[:cate]
+
+    #   if !cate.nil?
+    #     @movies = Movie.where(category: cate)
+    #   else
+    #     @movies = Movie.all
+    #   end
+    # end
     @favourite_exists = Favourite.where(movie: @movie, user: current_user) == [] ? false : true
+
+    search = params[:search]
+    cate = params[:cate]
+
+    if search.present?
+      @movies = Movie.search(search).all
+    elsif cate.present?
+      @movies = Movie.category(cate).all
+    else
+      @movies = Movie.all
+    end
+    # @movies = Movie.where(:category => "Action").all
+    # @movies = Movie.where(["category LIKE ?", "%#{params[:cate]}%"])
   end
 
   # GET /movies/1 or /movies/1.json
   def show
+    @movies = Movie.all
     @movie = MovieService.getMovieById(params[:id])
   end
 
   # GET /movies/new
   def new
     @movie = Movie.new
+    @movies = Movie.all
   end
 
   # GET /movies/1/edit
   def edit
+    @movies = Movie.all
+  end
+
+  def confirm
+    @movies = Movie.all
+    @movie = Movie.new(movie_params)
+    if @movie
+      @movie.movie_detail = MovieDetail.new(movie_detail_params)
+    end
+    #@movie = @movie.movie_detail(movie_detail_params)
+    render :new if @movie.invalid?
   end
 
   # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
     @create_movie = MovieService.createMovie(@movie)
-    #@movie.user = current_user
+    
     respond_to do |format|
       if @create_movie
           @movie.create_movie_detail(movie_detail_params)

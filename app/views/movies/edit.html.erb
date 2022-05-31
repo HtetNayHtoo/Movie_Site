@@ -1,6 +1,131 @@
 <h1>Editing Movie</h1>
 
-<%= render 'form', movie: @movie %>
+<%= form_with(model: @movie) do |form| %>  
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
-<%= link_to 'Show', @movie %> |
-<%= link_to 'Back', movies_path %>
+      <ul>
+        <% @movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="field form-group row mb-3">
+            <%= form.label :title, class:'col-sm-2 col-form-label'%>
+            <div class="col-sm-10">
+            <%= form.text_field :title , class:"form-control col-md-4"%>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :price, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.number_field :price, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :category, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.text_field :category , class:"form-control col-md-4"%>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :director, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+                <%= form.text_field :director, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :description, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+                <%= form.text_field :desc, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :trailer_link, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+                <%= form.text_field :trailer_link, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :cast, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.text_field :cast, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :rotten_tomatoe, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.text_field :rotten_tomatoe, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3 ">
+            <%= form.label :imdb, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.text_field :imdb, class:"form-control col-md-4" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :poster_img, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.file_field :poster_img, multiple: true, class:"form-control-file" %>
+            </div>
+        </div>
+
+        <div class="field form-group row mb-3">
+            <%= form.label :release_date, class:'col-sm-2 col-form-label' %>
+            <div class="col-sm-10">
+            <%= form.datetime_select :release_date, class:"form-control" %>
+            </div>
+        </div>
+
+        <div class="actions form-group">
+            <!--<%= form.submit class:"btn btn-primary" %>-->
+            <%= link_to 'Update', 'movie', "data-toggle"=>"modal", "data-target" => "#editpost_#{@movie.id}", :class=>'btn btn-primary'%>
+            <!--<%= link_to 'Create Movie', 'new_movie_path', "data-toggle"=>"modal", "data-target" => "#confirmMovieModal",:class=>'btn button1 button2' %>-->
+            <%= link_to 'Back', movies_path, class:"btn btn-primary" %>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editpost_<%= @movie.id %>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Confirmation</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Are You Sure!</p>
+                </div>
+                <div class="modal-footer">
+                    <%= form.submit class:"btn btn-primary" %>
+                    <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+                    <!--<%= button_to 'Update',  movie_path(@movie), :class => 'btn btn-primary' %>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
