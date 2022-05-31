@@ -5,7 +5,31 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @favourite_exists = Favourite.where(movie: @movie, user: current_user) == [] ? false : true
-    @movies = Movie.where(params[:category])
+
+    # @movies = Movie.where(:category => "Action").all
+    # @movies = Movie.where(["category LIKE ?", "%#{params[:cate]}%"])
+
+    cate = params[:cate]
+
+    if !cate.nil?
+      @movies = Movie.where(category: cate)
+    else
+      @movies = Movie.all
+    end
+
+  end
+
+  def category
+    
+    @movies = Movie.all
+    cate = params[:cate]
+
+    if !cate.nil?
+      @movies = Movie.where(category: cate)
+    else
+      @movies = Movie.all
+    end
+  redirect_to movies_path
   end
 
   # GET /movies/1 or /movies/1.json
@@ -22,6 +46,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+    @movies = Movie.all
   end
 
   def confirm
