@@ -1,4 +1,4 @@
-<%= form_with(model: order) do |form| %>
+<%= form_with(model: order, url: confirm_orders_path(order)) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -11,27 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :total_price %>
-    <%= form.number_field :total_price %>
-  </div>
+  <div class="profile-center">
+    <% @order_price = 0 %>
+    <div class="col">
+      <%= form.label :movie_img %>
+      <% current_movie.poster_img.each do |poster_img| %>
+        <%= image_tag(poster_img, height: "200px", class:"card-img-top") %>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= form.label :qty %>
-    <%= form.number_field :qty %>
-  </div>
+    <div class="col my-3">
+      <%= form.label :title %>
+      <%= form.text_field :title, value: current_movie.title, class: 'form-control', :readonly => true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :deliver_date %>
-    <%= form.datetime_select :deliver_date %>
-  </div>
+    <div class="field col my-3">
+      <%= form.label :qty %>
+      <%= form.number_field :qty, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :deliver_flg %>
-    <%= form.check_box :deliver_flg %>
-  </div>
+    <%= form_with model: @movie do |f| %>
+      <%= f.hidden_field :movie_id, value: current_movie.id %>
+    <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field col">
+      <%= form.label :deliver_date %>
+      <%= form.date_field :deliver_date, class: 'form-control' %>
+    </div>
+
+    <div class="field col my-3">
+      <%= form.label :deliver_flg %>
+      <%= form.check_box :deliver_flg %>
+    </div>
+
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
