@@ -19,6 +19,13 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def confirm
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.movie_id = current_movie.id
+    render :new if @order.invalid?
+  end
+
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
