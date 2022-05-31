@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'cart/show'
   get 'home/index'
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: "password_resets#edit"
   patch 'password/reset/edit', to: "password_resets#update"
 
-  get 'order/movie/:movie_id', to: "orders#create", as: 'order/movie'
+  get 'order/movie/:movie_id', to: "orders#new", as: 'order/movie'
   resources :orders
  resources :likes , only: [:create,:destroy]
   resources :movie_details
@@ -27,6 +28,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'main#index'
+  root 'sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
