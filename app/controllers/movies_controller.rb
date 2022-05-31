@@ -4,18 +4,20 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     @movies = Movie.all
+    if @movies
+      @movies = Movie.all
+      cate = params[:cate]
+
+      if !cate.nil?
+        @movies = Movie.where(category: cate)
+      else
+        @movies = Movie.all
+      end
+    end
     @favourite_exists = Favourite.where(movie: @movie, user: current_user) == [] ? false : true
 
     # @movies = Movie.where(:category => "Action").all
     # @movies = Movie.where(["category LIKE ?", "%#{params[:cate]}%"])
-
-    cate = params[:cate]
-
-    if !cate.nil?
-      @movies = Movie.where(category: cate)
-    else
-      @movies = Movie.all
-    end
 
   end
 
