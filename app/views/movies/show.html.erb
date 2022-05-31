@@ -127,8 +127,8 @@
       <div class="card-body">
         <h5 class="card-title"><strong> Title : </strong><%= @movie.title %></h5>
         <p class="card-text"><strong>Description : </strong><%= @movie.movie_detail.desc%>.</p>
-        <p class="card-text"><strong>Director : </strong><%= @movie.movie_detail.director%></small></p>
-        <p class="card-text"><strong>Cast : </strong><%= @movie.movie_detail.cast%></small></p>
+        <p class="card-text"><strong>Director : </strong><%= @movie.movie_detail.director%></p>
+        <p class="card-text"><strong>Cast : </strong><%= @movie.movie_detail.cast%></p>
         <p class="card-text">
           <div>
               <% @movie.movie_detail.imdb.to_i.times do  %>
@@ -140,9 +140,10 @@
           <i class="fa-solid fa-tomato" style="color:red"></i>
           <%= @movie.movie_detail.rotten_tomatoe %>
         </p>
-        <div style="width:200px; height:200px">
+        <%# <div style="width:200px; height:200px">
        
-        </div>
+        </div> %>
+        <p class="card-text"><strong>Trailer : </strong><%= @movie.movie_detail.trailer_link %></p>
       </div>
     </div>
   </div>

@@ -198,8 +198,9 @@
   <% end %>
 </div>-->
 
+<% if current_user.user_type == "Admin" %>
   <%= link_to"New Movie", new_movie_path, class: 'btn btn-primary '%>
-
+<% end %>
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
   <% @movies.each do |movie|%>
@@ -216,8 +217,10 @@
           <%= link_to 'Movie Details', movie, class: "btn btn-outline-success" %>
           <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
           </p>
-          <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2 btn-sm' %> | 
-          <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2 btn-sm' %> 
+          <% if current_user.user_type == "Admin" %>
+            <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2 btn-sm' %> | 
+            <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2 btn-sm' %> 
+          <% end %>
         </div>
         <div class="card-footer d-flex justify-content-between">
           <%= button_to 'Order', orders_path, class: "btn btn-primary btn-sm" %>
