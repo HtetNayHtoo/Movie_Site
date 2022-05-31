@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-
+  skip_before_action :verify_authenticity_token
   # GET /orders or /orders.json
   def index
     @orders = Order.all
@@ -22,6 +22,8 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.movie_id = current_movie.id
 
     respond_to do |format|
       if @order.save
