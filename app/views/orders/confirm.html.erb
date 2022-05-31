@@ -28,12 +28,12 @@
 
     <div class="field col my-3">
       <%= form.label :qty %>
-      <%= form.number_field :qty, class: 'form-control' %>
+      <%= form.number_field :qty, class: 'form-control', :readonly => true %>
     </div>
-    <div class="field col">
-      <%= form.label :total_price %>
-      <%= form.number_field :total_price, value: @order_price = @order_price + (current_movie.price * @order.qty), class: "form-control", :readonly => true %>
-
+    <div class="field col my-3">
+      <%= form.label :total_price %>:
+      $<%= @order_price + (current_movie.price * @order.qty)  %>
+      <%= form.hidden_field :total_price, value: @order_price + (current_movie.price * @order.qty) %>
     </div>
     <%= form_with model: @movie do |f| %>
       <%= f.hidden_field :movie_id, value: current_movie.id %>
@@ -51,5 +51,5 @@
 
     <%= form.submit 'Confirm', class: "btn btn-primary" %>
 
-
 <% end %>
+
