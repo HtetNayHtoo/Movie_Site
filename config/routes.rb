@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :movie_details
   resources :movies do
     resources :orders
-    resources :comments,only: [:create,:destroy,:vote] 
+    resources :comments,only: [:create,:destroy] 
   end
   resources :favourites, only: [:create, :destroy]
   resources :movies

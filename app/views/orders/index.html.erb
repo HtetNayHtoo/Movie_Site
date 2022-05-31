@@ -20,8 +20,26 @@
         <td><%= order.deliver_flg %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td><%= link_to 'Delete', '#', "data-toggle"=>"modal", "data-target" => "#deleteorder_#{order.id}", class: "dropdown-item" %></td>
+        
       </tr>
+      <div class="modal fade" id="deleteorder_<%= order.id %>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Order Delete Confirmation</h5>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure to delete?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+              <%= button_to 'Delete', order, method: :delete, :class => 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </tbody>
 </table>
