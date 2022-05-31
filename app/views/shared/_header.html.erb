@@ -28,11 +28,11 @@
         </li>
        <% if current_user.user_type == "Admin" %>
           <li class="nav-item ms-5">
-           <%= link_to 'User List', users_path, class: "btn btn-sm btn-info text-white" %>
+           <%= link_to 'User List', users_path, class: "btn btn-sm btn-info text-white nav-link" %>
         </li>
        <% end %>
          <li class="nav-item ms-5">
-           <%= link_to 'Log Out', logout_path, class: "btn btn-sm btn-danger text-white" %>
+           <%= link_to 'Log Out', logout_path, class: "btn btn-sm btn-danger text-white nav-link" %>
         </li>
         
       </ul>

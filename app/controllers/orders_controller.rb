@@ -3,7 +3,12 @@ class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+   
+    if current_user.user_type == "Admin"
+       @orders = Order.all
+    else
+      @orders = current_user.orders
+    end
   end
 
   # GET /orders/1 or /orders/1.json
@@ -45,6 +50,7 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
