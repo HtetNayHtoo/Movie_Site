@@ -5,4 +5,6 @@ class Movie < ApplicationRecord
   has_many :favourites, :dependent => :destroy
   has_one :movie_detail, :dependent => :destroy
   has_many :likes, as: :likeable
+
+
 end

@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: "password_resets#update"
 
   get 'order/movie/:movie_id', to: "orders#new", as: 'order/movie'
-  resources :orders
-  resources :likes , only: [:create,:destroy]
+  resources :orders do
+    collection do
+      post :confirm
+    end
+  end
+ resources :likes , only: [:create,:destroy]
   resources :movie_details
   resources :movies do
     resources :orders

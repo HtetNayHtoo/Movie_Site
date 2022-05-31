@@ -19,6 +19,13 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def confirm
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.movie_id = current_movie.id
+    render :new if @order.invalid?
+  end
+
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
@@ -51,7 +58,7 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
-    @order.destroy
+    @destroy_order = OrderService.destroyOrder(@order)
 
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
