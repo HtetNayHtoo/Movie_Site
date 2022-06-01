@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
       @movies = Movie.all
     end 
 
-  # movie method
+  # movie method bug fix
 
 end
