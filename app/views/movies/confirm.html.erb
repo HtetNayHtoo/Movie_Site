@@ -150,7 +150,7 @@
 
           <p class="card-text">
           <strong>Release Date:</strong>
-          <%= @movie.movie_detail.release_date %>
+          <%= @movie.movie_detail.release_date.strftime("%m/%d/%Y") %>
           </p>
         </div>
       

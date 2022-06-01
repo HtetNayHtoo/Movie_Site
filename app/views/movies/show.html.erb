@@ -120,12 +120,58 @@
   <div class="row g-0">
     <div class="col-md-4">
       <% @movie.poster_img.each do |poster_img| %>
-          <%= image_tag(poster_img, class: "img-thumbnail") %>
+          <%= image_tag(poster_img, class: "img-thumbnail", style: "height: 500px;") %>
         <% end %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><strong> Title : </strong><%= @movie.title %></h5>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th><h5 class="card-title"> Title :</h5></th>
+          <th><h5 class="card-title"><%= @movie.title %></h5></th>
+        </tr>
+        </thead>
+        <tbody class="card-text">
+          <tr>
+            <td><strong>Description:</strong>
+            <td><%= @movie.movie_detail.desc%></td>
+          </tr>
+          <tr>
+            <td><strong>Category :</strong>
+            <td><%= @movie.category%></td>
+          </tr>
+          <tr>
+            <td><strong>Director :</strong></td>
+            <td><%= @movie.movie_detail.director%></td>
+          </tr>
+          <tr>
+            <td><strong>Cast :</strong></td>
+            <td><%= @movie.movie_detail.cast%></td>
+          </tr>
+          <tr>
+            <td><strong>Release Date :</strong></td>
+            <td><%= @movie.movie_detail.release_date.strftime("%m/%d/%Y") %></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+            <% @movie.movie_detail.imdb.to_i.times do  %>
+              <span class="fas fa-star star-icon2" style="color:yellow"></span>
+            <% end %>
+            </td>
+          </tr>
+          <tr class="pt-3">
+            <td colspan = "2" class="card-text fs-1 text-danger" > <%= @movie.movie_detail.rotten_tomatoe %></td>
+          </tr>
+          <tr class="pt-5">
+            <td><strong>Trailer :</strong></td>
+            <td><%= @movie.movie_detail.trailer_link %></td>
+          </tr>
+        </tbody>
+      </table>
+
+        <!--<h5 class="card-title"><strong> Title : </strong><%= @movie.title %></h5>
         <p class="card-text"><strong>Description : </strong><%= @movie.movie_detail.desc%>.</p>
         <p class="card-text"><strong>Director : </strong><%= @movie.movie_detail.director%></p>
         <p class="card-text"><strong>Cast : </strong><%= @movie.movie_detail.cast%></p>
@@ -143,7 +189,7 @@
         <%# <div style="width:200px; height:200px">
        
         </div> %>
-        <p class="card-text"><strong>Trailer : </strong><%= @movie.movie_detail.trailer_link %></p>
+        <p class="card-text"><strong>Trailer : </strong><%= @movie.movie_detail.trailer_link %></p>-->
       </div>
     </div>
   </div>
