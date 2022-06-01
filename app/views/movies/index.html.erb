@@ -43,7 +43,7 @@
         <%= link_to 'Movie Details', movie, class: "card-link text-primary" %>
         <br/><br/>
         <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2' %> | <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2' %> <br/>   
-        <!--<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %> 
+        <!-<%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %> 
         <% favourite = current_user.favourites.find_by(movie: movie)%>
         <% if favourite.nil? %>
             <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success" %> <br/>
@@ -199,7 +199,7 @@
 </div>-->
 
 <% if current_user.user_type == "Admin" %>
-  <%= link_to"New Movie", new_movie_path, class: 'btn btn-primary '%>
+  <%= link_to"New Movie", new_movie_path, class: 'mt-3 btn btn-dark '%>
 <% end %>
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -214,7 +214,7 @@
           <p class="card-text">Category : <%= movie.category %></p>
           <p class="card-text">Price : <%= movie.price %></p>
           <p class="card-text d-flex justify-content-between">
-          <%= link_to 'Movie Details', movie, class: "btn btn-outline-success" %>
+          <%= link_to 'More Details', movie, class: "btn btn-outline-success" %>
           <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
           </p>
           <% if current_user.user_type == "Admin" %>
@@ -223,7 +223,7 @@
           <% end %>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-primary" %> 
+          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-dark" %> 
           <% favourite = current_user.favourites.find_by(movie: movie)%>
             <% if favourite.nil? %>
                 <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success btn-sm" %> <br/>
