@@ -1,9 +1,14 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-
+  skip_before_action :verify_authenticity_token
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+   
+    if current_user.user_type == "Admin"
+       @orders = OrderService.index
+    else
+      @orders = current_user.orders
+    end
   end
 
   # GET /orders/1 or /orders/1.json
@@ -12,19 +17,28 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = OrderService.new
   end
 
   # GET /orders/1/edit
   def edit
   end
 
+  def confirm
+    @order = OrderService.create_order(order_params)
+    @order.user_id = current_user.id
+    @order.movie_id = current_movie.id
+    render :new if @order.invalid?
+  end
+
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
-
+    @order = OrderService.create_order(order_params)
+    @order.user_id = current_user.id
+    @order.movie_id = current_movie.id
+    isSave = OrderService.create(@order)
     respond_to do |format|
-      if @order.save
+      if isSave
         format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
@@ -36,8 +50,9 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    isUpdate = OrderService.update(params[:id],order_params)
     respond_to do |format|
-      if @order.update(order_params)
+      if isUpdate
         format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -49,8 +64,8 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
-    @order.destroy
 
+    OrderService.destroyOrder(params[:id])
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
       format.json { head :no_content }
@@ -60,7 +75,7 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      @order = OrderService.set_order(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

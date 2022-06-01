@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'cart/show'
   get 'home/index'
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -11,21 +12,32 @@ Rails.application.routes.draw do
   get 'password/reset/edit', to: "password_resets#edit"
   patch 'password/reset/edit', to: "password_resets#update"
 
-  resources :orders
-  resources :likes , only: [:create,:destroy]
-  resources :movie_details
-  resources :movies do
-    resources :comments
-    collection do #This is important
-      post :confirm #This is important
-    end
-  end
-  resources :favourites, only: [:create, :destroy]
-  resources :users do
-  end
-  root 'main#index'
-
   get "/search", to: "movies#search"
   get "/category", to: "movies#category"
+
+  get 'order/movie/:movie_id', to: "orders#new", as: 'order/movie'
+  resources :orders do
+    collection do
+      post :confirm
+    end
+  end
+ resources :likes , only: [:create,:destroy]
+  resources :movie_details
+  resources :movies do
+    resources :orders
+    resources :comments,only: [:create,:destroy] 
+      collection do #This is important
+      post :confirm #This is important
+      end
+  end
+  resources :favourites, only: [:create, :destroy]
+  resources :movies
+  resources :users do
+    collection do
+      post :confirm
+    end
+  end
+
+  root 'sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

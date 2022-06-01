@@ -223,7 +223,7 @@
           <% end %>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <%= button_to 'Order', orders_path, class: "btn btn-primary btn-sm" %>
+          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-primary" %> 
           <% favourite = current_user.favourites.find_by(movie: movie)%>
             <% if favourite.nil? %>
                 <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success btn-sm" %> <br/>

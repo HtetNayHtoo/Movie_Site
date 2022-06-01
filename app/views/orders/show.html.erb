@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="profile-center">
 
-<p>
-  <strong>Total price:</strong>
-  <%= @order.total_price %>
-</p>
+  <p class="form-control">
+    <strong>Total price:</strong>
+    <%= @order.movie.price * @order.qty %>
+  </p>
 
-<p>
-  <strong>Qty:</strong>
-  <%= @order.qty %>
-</p>
+  <p class="form-control">
+    <strong>Qty:</strong>
+    <%= @order.qty %>
+  </p>
 
-<p>
-  <strong>Deliver date:</strong>
-  <%= @order.deliver_date %>
-</p>
+  <p class="form-control">
+    <strong>Deliver date:</strong>
+    <%= @order.deliver_date %>
+  </p>
 
-<p>
-  <strong>Deliver flg:</strong>
-  <%= @order.deliver_flg %>
-</p>
+  <p class="form-control">
+    <strong>Deliver flg:</strong>
+    <%= @order.deliver_flg %>
+  </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-sm btn-outline-secondary me-3" %> |
+    <%= link_to 'Back', orders_path, class: "btn btn-sm btn-dark ms-3" %>
+  </div>
+</div>

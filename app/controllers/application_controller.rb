@@ -16,5 +16,13 @@ class ApplicationController < ActionController::Base
     end 
 
   # movie method bug fix 2
+    helper_method :current_movie
+    def current_movie
+      if params[:movie_id]
+        @current_movie ||= Movie.find(params[:movie_id])
+      else
+        @current_movie = nil
+      end
+    end
 
 end
