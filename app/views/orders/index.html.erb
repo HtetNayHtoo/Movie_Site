@@ -1,9 +1,12 @@
-<% if current_user %>
-  <table class="table table-striped mt-4">
+<table class="table table-striped mt-4">
   <thead class="table-dark">
     <tr>
+      <th>Title</th>
       <th>Total price</th>
       <th>Qty</th>
+      <% if current_user.user_type == "Admin" %>
+        <th>Order of email</th>
+      <% end %>
       <th>Deliver date</th>
       <th>Deliver flg</th>
       <th>Operations</th>
@@ -13,8 +16,12 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.movie.title %></td>
         <td><%= order.movie.price * order.qty %></td>
         <td><%= order.qty %></td>
+        <% if current_user.user_type == "Admin" %>
+          <td><%= order.user.email %></td>
+        <% end %>
         <td><%= order.deliver_date %></td>
         <td><%= order.deliver_flg %></td>
         <td>
@@ -54,6 +61,5 @@
 
 <br>
 
-<%= link_to 'New Order', movies_path %>
+<%= link_to 'New Order', movies_path, class: "btn btn-primary" %>
 
-<% end %>
