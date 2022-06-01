@@ -12,8 +12,8 @@ class MovieService
             @movie = MovieRepository.getMovieById(id)
         end
 
-        def updateMovie(movie, movie_params)
-            @update_movie = MovieRepository.updateMovie(movie, movie_params)
+        def updateMovie(movie, movie_params, movie_detail_params)
+            @update_movie = MovieRepository.updateMovie(movie, movie_params, movie_detail_params)
         end
 
         def destroyMovie(movie)
