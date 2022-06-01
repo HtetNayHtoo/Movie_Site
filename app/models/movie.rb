@@ -11,9 +11,6 @@ class Movie < ApplicationRecord
     if search.present?
       @movies = Movie.all.where(["title LIKE ? OR category LIKE ? ", "%#{search}%", "%#{search}%"])
       # @movies = MovieDetail.all.where(["cast LIKE ? OR director LIKE ? ", "%#{search}%", "%#{search}%"])
-        # @users = User.where(["username LIKE ? OR address LIKE ?
-        #   OR usertype LIKE ? OR email LIKE ? OR birthday LIKE ? 
-        #   OR ph LIKE ?", "%#{search}%"]
     else
        @movies = Movie.all
     end

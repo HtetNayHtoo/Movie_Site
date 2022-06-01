@@ -38,16 +38,15 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @movie = Movie.new
-    @movies = Movie.all
+    # @movies = Movie.all
   end
 
   # GET /movies/1/edit
   def edit
-    @movies = Movie.all
   end
 
   def confirm
-    @movies = Movie.all
+    # @movies = Movie.all
     @movie = Movie.new(movie_params)
     if @movie
       @movie.movie_detail = MovieDetail.new(movie_detail_params)
@@ -75,10 +74,10 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1 or /movies/1.json
   def update
-    @update_movie = MovieService.updateMovie(@movie, movie_params)
+    @update_movie = MovieService.updateMovie(@movie, movie_params, movie_detail_params)
     respond_to do |format|
       if @update_movie
-        @movie.movie_detail.update(movie_detail_params)
+        # @movie.movie_detail.update(movie_detail_params)
         format.html { redirect_to movies_path(@movie), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
       else

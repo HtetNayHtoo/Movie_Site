@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :movie
 
   helper_method :current_user
     def current_user
@@ -8,4 +9,10 @@ class ApplicationController < ActionController::Base
         @current_user = nil
       end
     end
+
+  helper_method :movie
+    def movie
+      @movies = Movie.all
+    end
+
 end
