@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   helper_method :movie
     def movie
       @movies = Movie.all
-    end
+    end 
+
+  # movie method
 
 end
