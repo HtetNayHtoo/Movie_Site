@@ -32,19 +32,19 @@
         <li class="nav-item ms-5">
          <%= link_to 'Profile', current_user, class: 'nav-link' %>
         </li>
+        <li >
+        <%= form_tag(movies_path, :method => "get", class:"form-inline") do %>
+          <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>-->
+          <%= text_field_tag :search, params[:search], :placeholder => "Search", class:"form-control mr-sm-2"%>
+          <%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0"%>
+        <% end %>
+        </li>
        <% if current_user.user_type == "Admin" %>
           <li class="nav-item ms-5">
            <%= link_to 'User List', users_path, class: "btn btn-sm btn-info text-white" %>
         </li>
        <% end %>
-       <li>
-        <%= form_tag(movies_path, :method => "get") do %>
-          <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>-->
-          <%= text_field_tag :search, params[:search], :placeholder => "Search"%>
-          <%= submit_tag "Search", class:"btn btn-primary btn-sm float-end"%>
-        <% end %>
-        </li>
         <li class="nav-item ms-5">
            <%= link_to 'Log Out', logout_path, class: "btn btn-sm btn-danger text-white" %>
         </li>

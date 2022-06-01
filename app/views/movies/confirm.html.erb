@@ -46,7 +46,7 @@
 <div class="container h-100">
   <div class="row h-100 justify-content-center align-items-center">
     <div class="col-10 col-md-8 col-lg-6">
-      <h1>Confirmation</h1>
+      <!--<h1>Confirmation</h1>
 
       <p>
       <strong>Movie Title:</strong>
@@ -96,7 +96,64 @@
       <p>
       <strong>Release Date:</strong>
       <%= @movie.movie_detail.release_date %>
-      </p>
+      </p>-->
+
+      <div class="card">
+        <div class="card-header text-center card-title">
+         Confirmation
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+          <strong>Movie Title:</strong>
+          <%= @movie.title %>
+          </p>
+
+          <p class="card-text">
+          <strong>Category:</strong>
+          <%= @movie.category %>
+          </p>
+
+          <p class="card-text">
+          <strong>Price:</strong>
+          <%= @movie.price %>
+          </p>
+
+          <p class="card-text">
+          <strong>Description:</strong>
+          <%= @movie.movie_detail.desc %>
+          </p>
+
+          <p class="card-text">
+          <strong>Director:</strong>
+          <%= @movie.movie_detail.director %>
+          </p>
+
+          <p class="card-text">
+          <strong>Cast:</strong>
+          <%= @movie.movie_detail.cast %>
+          </p>
+
+          <p class="card-text">
+          <strong>Trailer:</strong>
+          <%= @movie.movie_detail.trailer_link %>
+          </p>
+
+          <p class="card-text">
+          <strong>IMDB:</strong>
+          <%= @movie.movie_detail.imdb %>
+          </p>
+
+          <p class="card-text">
+          <strong>Rotten Tomatoe:</strong>
+          <%= @movie.movie_detail.rotten_tomatoe %>
+          </p>
+
+          <p class="card-text">
+          <strong>Release Date:</strong>
+          <%= @movie.movie_detail.release_date %>
+          </p>
+        </div>
+      
 
       <%= form_with(model: @movie, local: true) do |f| %>
         <%= f.hidden_field :title %>
@@ -109,10 +166,11 @@
         <%= f.hidden_field :imdb%>
         <%= f.hidden_field :rotten_tomatoe%>
         <%= f.hidden_field :release_date%>
-        <%= f.file_field :poster_img, multiple: true, class:"form-control-file" %> <br/>
-        <%= f.submit class: 'btn button1 button2' %>
-        <%= link_to 'Back', new_movie_path, class: 'btn button1 button2' %>
+        <%= f.file_field :poster_img, multiple: true, class:"form-control-file" %><br/><br/>
+        <%= f.submit class: 'btn btn-primary button1 button2' %>
+        <%= link_to 'Back', new_movie_path, class: 'btn btn-primary button1 button2' %>
       <% end %>
+      </div>
       </div>
     </div>
   </div>
