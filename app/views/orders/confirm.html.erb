@@ -16,7 +16,6 @@
     <h2>Confirm Order</h2>
     <% @order_price = 0 %>
     <div class="col">
-      <%= form.label :movie_img %>
       <% current_movie.poster_img.each do |poster_img| %>
         <%= image_tag(poster_img, height: "200px", class:"card-img-top") %>
       <% end %>

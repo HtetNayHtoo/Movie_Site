@@ -1,65 +1,67 @@
-<table class="table table-striped mt-4">
-  <thead class="table-dark">
-    <tr>
-      <th>Title</th>
-      <th>Total price</th>
-      <th>Qty</th>
-      <% if current_user.user_type == "Admin" %>
-        <th>Order of email</th>
-      <% end %>
-      <th>Deliver date</th>
-      <th>Deliver flg</th>
-      <th>Operations</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+<div class="table-responsive-sm table-responsive-md">
+  <table class="table table-striped mt-4">
+    <thead class="table-dark">
       <tr>
-        <td><%= order.movie.title %></td>
-        <td><%= order.movie.price * order.qty %></td>
-        <td><%= order.qty %></td>
+        <th>Title</th>
+        <th>Total price</th>
+        <th>Qty</th>
         <% if current_user.user_type == "Admin" %>
-          <td><%= order.user.email %></td>
+          <th>Order of email</th>
         <% end %>
-        <td><%= order.deliver_date %></td>
-        <td><%= order.deliver_flg %></td>
-        <td>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Operations
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><%= link_to 'Show', order, class: 'dropdown-item' %></li>
-              <li><%= link_to 'Edit', edit_order_path(order), class: "dropdown-item" %></li>
-              <li>
-                <%= link_to 'Delete', '#', "data-toggle"=>"modal", "data-target" => "#deleteorder_#{order.id}", class: "dropdown-item" %>
-              </li>
-            </ul>
-          </div>
-        </td>
+        <th>Deliver date</th>
+        <th>Deliver flg</th>
+        <th>Operations</th>
       </tr>
-      <div class="modal fade" id="deleteorder_<%= order.id %>">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Order Delete Confirmation</h5>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.movie.title %></td>
+          <td><%= order.movie.price * order.qty %></td>
+          <td><%= order.qty %></td>
+          <% if current_user.user_type == "Admin" %>
+            <td><%= order.user.email %></td>
+          <% end %>
+          <td><%= order.deliver_date %></td>
+          <td><%= order.deliver_flg %></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Operations
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><%= link_to 'Show', order, class: 'dropdown-item' %></li>
+                <li><%= link_to 'Edit', edit_order_path(order), class: "dropdown-item" %></li>
+                <li>
+                  <%= link_to 'Delete', '#', "data-toggle"=>"modal", "data-target" => "#deleteorder_#{order.id}", class: "dropdown-item" %>
+                </li>
+              </ul>
             </div>
-            <div class="modal-body">
-              <p>Are you sure to delete?</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
-              <%= button_to 'Delete', order, method: :delete, :class => 'btn btn-danger' %>
+          </td>
+        </tr>
+        <div class="modal fade" id="deleteorder_<%= order.id %>">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Order Delete Confirmation</h5>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure to delete?</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+                <%= button_to 'Delete', order, method: :delete, :class => 'btn btn-danger' %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Order', movies_path, class: "btn btn-dark" %>
+<%= link_to 'New Order', movies_path, class: "btn btn-primary" %>
 
