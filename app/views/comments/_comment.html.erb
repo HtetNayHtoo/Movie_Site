@@ -14,13 +14,13 @@
         <p style="font-size:16px;"><%= comment.content %></p>
       </div>
       <div class="row">
-        <div class="col-5">
+        <div class="col-6">
           <small style="color:#1A1E8D;margin:0 10px;"><%= time_ago_in_words(comment.created_at) %> ago</small>
         </div>
         <div class="col-5">
           <%= render partial: 'likes/form', locals: { likeable: comment } %>
         </div>
-        <div class="col-2">
+        <div class="col-1">
           <% if current_user && current_user == comment.user %>
             <%= link_to 'Delete', 'comment', "data-toggle"=>"modal", "data-target" => "#deletecomment_#{comment.id}",:class=>'btn button1 button2 text-danger' %>
           <% end %>
