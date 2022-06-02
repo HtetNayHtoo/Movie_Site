@@ -3,34 +3,32 @@
 
 <article>
   <div class="row">
-    <div class="col-2">
-      <div>
-        <% if comment.user.profile_img.attached? %>
-          <%= image_tag comment.user.profile_img, class: "rounded-circle w-25" %>
-        <% end%>
-      </div>
+    <div class="col-1">
+      <% if comment.user.profile_img.attached? %>
+        <%= image_tag comment.user.profile_img, class: "rounded-circle w-50" %>
+      <% end%>
     </div>
     <div class="col-4">
-      <div class="row">
-        <small style="color:#1A1E8D;font-style:italic;">by <%= comment.user.name %></small>
-      </div>
-      <div class="row">
+      <div class="row" style="background-color:#ddd;width:200px;border-radius:20px;padding:0 5px;margin-bottom:20px;">
+        <small style="color:#000;font-weight:bold;"><%= comment.user.name %></small>
         <p style="font-size:16px;"><%= comment.content %></p>
       </div>
       <div class="row">
-        <div class="col-2">
-          <small style="color:#1A1E8D;margin:0 10px;">Posted <%= time_ago_in_words(comment.created_at) %> ago</small>
+        <div class="col-5">
+          <small style="color:#1A1E8D;margin:0 10px;"><%= time_ago_in_words(comment.created_at) %> ago</small>
+        </div>
+        <div class="col-5">
+          <%= render partial: 'likes/form', locals: { likeable: comment } %>
         </div>
         <div class="col-2">
-          <%= render partial: 'likes/form', locals: { likeable: comment } %>
+          <% if current_user && current_user == comment.user %>
+            <%= link_to 'Delete', 'comment', "data-toggle"=>"modal", "data-target" => "#deletecomment_#{comment.id}",:class=>'btn button1 button2 text-danger' %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <% if current_user && current_user == comment.user %>
-    <%= link_to 'Delete', 'comment', "data-toggle"=>"modal", "data-target" => "#deletecomment_#{comment.id}",:class=>'btn button1 button2 text-danger' %>
-  <% end %>
-
+  
 </article>
 </div>
  <div class="modal fade" id="deletecomment_<%= comment.id %>">
