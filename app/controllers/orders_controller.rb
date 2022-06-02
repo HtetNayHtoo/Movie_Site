@@ -3,7 +3,15 @@ class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET /orders or /orders.json
   def index
-   
+    @orders = Order.all
+    @sql = "SELECT
+      DATE_FORMAT(`created_at`, '%m') as `date`,
+      COUNT(*) as `count`
+      FROM movie.orders
+      GROUP BY MONTH(`created_at`)";
+    @arrays = ActiveRecord::Base.connection.execute(@sql).to_h;
+
+
     if current_user.user_type == "Admin"
        @orders = OrderService.index
     else

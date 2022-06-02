@@ -63,5 +63,34 @@
 
 <br>
 
-<%= link_to 'New Order', movies_path, class: "btn btn-primary" %>
+<%= link_to 'New Order', movies_path, class: "btn btn-primary" %> <br/><br/>
+
+<canvas id="myChart" style="width:50; height:50"></canvas>
+
+<script>
+  var xValues = ["January", "February", "March", "April", "May","June","July","August","September","October","November","December"];
+  var yValues = [<%=@arrays["01"]%>,<%=@arrays["02"]%>,<%=@arrays["03"]%>, <%=@arrays["04"]%>, <%=@arrays["05"]%>, <%=@arrays["06"]%>,
+                <%=@arrays["07"]%>,<%=@arrays["08"]%>, <%=@arrays["09"]%>, <%=@arrays["10"]%>, <%=@arrays["11"]%>, <%=@arrays["12"]%>];
+  var barColors = ["red", "green","blue","orange","brown"];
+
+  new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+    options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Order chart"
+    }
+  }
+});
+</script>
+
+
 
