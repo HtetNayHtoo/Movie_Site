@@ -1,4 +1,8 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'kl6022448@gmail.com'
+<<<<<<< HEAD
+  default from: 'support@movie.com'
+=======
+  default from: 'scm.htetnayhtoo@gmail.com'
+>>>>>>> movie_modal
   layout 'mailer'
 end

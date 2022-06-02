@@ -6,11 +6,16 @@
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="col my-2">
-    <%= form.label :user_type %>
-    <br>
-     <%= form.select :user_type, [['Please select a user', nil], 'Admin', 'User'], {}, {class: 'form-control'}  %>
-  </div>
+  <% if current_user.present? %>
+    <div class="col my-2">
+      <%= form.label :user_type %>
+      <%= form.select :user_type, [['Please select a user', nil], 'Admin', 'User'], {}, {class: 'form-control'}  %>
+    </div>
+    <% else %>
+    <div class="d-none">
+      <%= form.select :user_type, ['User'], {}, {class: 'form-control'}  %>
+    </div>
+  <% end %>
 
   <div class="col">
     <%= form.label :email %>

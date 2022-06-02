@@ -31,3 +31,28 @@
   width: 400px;
   margin: 100px auto 0;
 }
+
+  /*  Ipad  */
+@media screen and (min-width: 768px) and (max-width: 1119.9px) {
+  .profile-center {
+    width: 400px;
+    margin: 20px auto 0;
+  }
+}
+
+@media screen and (max-width:767.9px) {
+  .profile-center {
+    width: 100%;
+    margin: 20px auto 0;
+  }
+
+  .show-back {
+    width: 100%;
+    margin: 15px auto 0;
+  }
+
+  .login-center {
+    width: 100%;
+    margin: 100px auto 0;
+  }
+}
