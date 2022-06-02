@@ -41,7 +41,9 @@
 
     <div class="field col my-3">
       <%= form.label :deliver_flg %>
-      <%= form.check_box :deliver_flg %>
+      <div class="checkbox">
+        <%= form.check_box :deliver_flg %>
+      </div>
     </div>
 
     <%= form.submit class: "btn btn-primary" %>
