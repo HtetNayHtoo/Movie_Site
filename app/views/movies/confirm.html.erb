@@ -103,55 +103,90 @@
          Confirmation
         </div>
         <div class="card-body">
-          <p class="card-text">
-          <strong>Movie Title:</strong>
-          <%= @movie.title %>
-          </p>
-
-          <p class="card-text">
-          <strong>Category:</strong>
-          <%= @movie.category %>
-          </p>
-
-          <p class="card-text">
-          <strong>Price:</strong>
-          <%= @movie.price %>
-          </p>
-
-          <p class="card-text">
-          <strong>Description:</strong>
-          <%= @movie.movie_detail.desc %>
-          </p>
-
-          <p class="card-text">
-          <strong>Director:</strong>
-          <%= @movie.movie_detail.director %>
-          </p>
-
-          <p class="card-text">
-          <strong>Cast:</strong>
-          <%= @movie.movie_detail.cast %>
-          </p>
-
-          <p class="card-text">
-          <strong>Trailer:</strong>
-          <%= @movie.movie_detail.trailer_link %>
-          </p>
-
-          <p class="card-text">
-          <strong>IMDB:</strong>
-          <%= @movie.movie_detail.imdb %>
-          </p>
-
-          <p class="card-text">
-          <strong>Rotten Tomatoe:</strong>
-          <%= @movie.movie_detail.rotten_tomatoe %>
-          </p>
-
-          <p class="card-text">
-          <strong>Release Date:</strong>
-          <%= @movie.movie_detail.release_date.strftime("%m/%d/%Y") %>
-          </p>
+          <table class="table table-responsive table-borderless card-text">
+            <thead>
+              <tr>
+                <th>
+                <strong>Movie Title:</strong>
+                </th>
+                <th>
+                  <%= @movie.title %>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                <strong>Category:</strong>
+                </td>
+                <td>
+                <%= @movie.category %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <strong>Price:</strong>
+                </td>
+                <td>
+                <%= @movie.price %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <strong>Description:</strong>
+                </td>
+                <td>
+                <%= @movie.movie_detail.desc %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <strong>Director:</strong>
+                </td>
+                <td>
+                <%= @movie.movie_detail.director %>
+                </td>
+              <tr>
+              <tr>
+                <td>
+                <strong>Cast:</strong>
+                </td>
+                <td>
+                <%= @movie.movie_detail.cast %>
+                </td>
+              </tr>
+              <td>
+              <strong>Trailer:</strong>
+              </td>
+              <td>
+              <%= @movie.movie_detail.trailer_link %>
+              </td>
+              <tr>
+                <td>
+                <strong>IMDB:</strong>
+                </td>
+                <td>
+                <%= @movie.movie_detail.imdb %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <strong>Rotten Tomatoe:</strong>
+                </td>
+                <td>
+                <%= @movie.movie_detail.rotten_tomatoe %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <strong>Release Date:</strong>
+                </td>
+                <td>
+                <%= @movie.movie_detail.try(:release_date).try(:strftime, "%m/%d/%Y") %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       
 
@@ -167,8 +202,8 @@
         <%= f.hidden_field :rotten_tomatoe%>
         <%= f.hidden_field :release_date%>
         <%= f.file_field :poster_img, multiple: true, class:"form-control-file" %><br/><br/>
-        <%= f.submit class: 'btn btn-primary button1 button2' %>
-        <%= link_to 'Back', new_movie_path, class: 'btn btn-primary button1 button2' %>
+        <%= f.submit class: 'btn btn-primary button1 button2 mb-2' %>
+        <%= link_to 'Back', new_movie_path, class: 'btn btn-primary button1 button2 mb-2' %>
       <% end %>
       </div>
       </div>
