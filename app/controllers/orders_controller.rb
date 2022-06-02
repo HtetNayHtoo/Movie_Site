@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     else
       @orders = current_user.orders
       OrderMailer.order_list(current_user.email,@orders).deliver_now
+      
     end
   end
 

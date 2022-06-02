@@ -1,0 +1,17 @@
+.cmm-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  .cmm-form{
+    position: relative;
+    width: 200px;
+    background-color:#ddd;
+    border-radius:20px;
+    padding:0 5px;
+    margin-bottom:20px;
+    word-break:break-all;
+  }
+  .cmm-content{
+    font-size:16px;
+  }
