@@ -2,18 +2,31 @@
 <div id="comment-<%= comment.id %>">
 
 <article>
-  <div class="row mb-3">
-    <div class="col-4">
-      <p style="font-size:16px;"><%= comment.content %></p>
-    </div>
+  <div class="row">
     <div class="col-2">
-       <%= render partial: 'likes/form', locals: { likeable: comment } %>
+      <div>
+        <% if comment.user.profile_img.attached? %>
+          <%= image_tag comment.user.profile_img, class: "rounded-circle w-25" %>
+        <% end%>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <small style="color:#1A1E8D;font-style:italic;">by <%= comment.user.name %></small>
+      </div>
+      <div class="row">
+        <p style="font-size:16px;"><%= comment.content %></p>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <small style="color:#1A1E8D;margin:0 10px;">Posted <%= time_ago_in_words(comment.created_at) %> ago</small>
+        </div>
+        <div class="col-2">
+          <%= render partial: 'likes/form', locals: { likeable: comment } %>
+        </div>
+      </div>
     </div>
   </div>
-  <small style="color:#1A1E8D;font-style:italic;">by <%= comment.user.email %></small>
-   
-  <small style="color:#1A1E8D;margin:0 10px;">Posted <%= time_ago_in_words(comment.created_at) %> ago</small>
-    
   <% if current_user && current_user == comment.user %>
     <%= link_to 'Delete', 'comment', "data-toggle"=>"modal", "data-target" => "#deletecomment_#{comment.id}",:class=>'btn button1 button2 text-danger' %>
   <% end %>
