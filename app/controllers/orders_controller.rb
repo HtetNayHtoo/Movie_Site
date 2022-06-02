@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
        @orders = OrderService.index
     else
       @orders = current_user.orders
+      OrderMailer.order_list(current_user.email,@orders).deliver_now
     end
   end
 
@@ -28,6 +29,7 @@ class OrdersController < ApplicationController
     @order = OrderService.create_order(order_params)
     @order.user_id = current_user.id
     @order.movie_id = current_movie.id
+    
     render :new if @order.invalid?
   end
 
@@ -39,6 +41,7 @@ class OrdersController < ApplicationController
     isSave = OrderService.create(@order)
     respond_to do |format|
       if isSave
+        OrderMailer.order_send(current_user.email,@order).deliver_now
         format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
@@ -67,6 +70,7 @@ class OrdersController < ApplicationController
 
     OrderService.destroyOrder(params[:id])
     respond_to do |format|
+      OrderMailer.order_delete(current_user.email,@order).deliver_now
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
       format.json { head :no_content }
     end

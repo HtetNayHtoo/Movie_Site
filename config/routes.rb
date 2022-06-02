@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   resources :movies do
     resources :orders
     resources :comments,only: [:create,:destroy] 
-      collection do #This is important
-      post :confirm #This is important
+      collection do 
+        post :confirm
       end
   end
   resources :favourites, only: [:create, :destroy]
