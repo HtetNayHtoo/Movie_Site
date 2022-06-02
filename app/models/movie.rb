@@ -9,9 +9,9 @@ class Movie < ApplicationRecord
 
   def self.search(search)
     if search.present?
-      @movies = Movie.all.where(["title LIKE :search OR category LIKE :search", search: "%#{search}%"])
+      @movies = Movie.left_outer_joins(:movie_detail,).where(["movies.title LIKE :search OR movies.category LIKE :search OR movie_details.cast LIKE :search OR movie_details.director LIKE :search " , search: "%#{search}%" ])
       # if @movies
-      #   @movies = Movie.includes(:movie_detail).all.where(["cast LIKE ? OR director LIKE ? ", "%#{search}%", "%#{search}%"])
+      #   @movie_details = MovieDetail.all.where(["cast LIKE :search OR director LIKE :search ", search: "%#{search}%" ])
       # end
     else
        @movies = Movie.all
