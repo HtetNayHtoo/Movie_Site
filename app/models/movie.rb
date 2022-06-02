@@ -9,8 +9,10 @@ class Movie < ApplicationRecord
 
   def self.search(search)
     if search.present?
-      @movies = Movie.all.where(["title LIKE ? OR category LIKE ? ", "%#{search}%", "%#{search}%"])
-      # @movies = MovieDetail.all.where(["cast LIKE ? OR director LIKE ? ", "%#{search}%", "%#{search}%"])
+      @movies = Movie.all.where(["title LIKE :search OR category LIKE :search", search: "%#{search}%"])
+      # if @movies
+      #   @movies = Movie.includes(:movie_detail).all.where(["cast LIKE ? OR director LIKE ? ", "%#{search}%", "%#{search}%"])
+      # end
     else
        @movies = Movie.all
     end
