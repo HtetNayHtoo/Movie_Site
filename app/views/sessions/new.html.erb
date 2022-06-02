@@ -7,13 +7,13 @@
     <%= label_tag :email %>
     <%= text_field_tag :email, "",class: 'form-control' %>
   </div>
-  <div class='field col'>
+  <div class='field col mb-2'>
     <%= label_tag :password %>
     <%= password_field_tag :password, "", class: 'form-control' %>
   </div>
   <div class='row mt-3'>
     <div class="actions col">
-      <%= submit_tag 'Login', class: 'btn btn-dark text-white' %>
+      <%= submit_tag 'Login', class: 'btn btn-primary text-white' %>
     </div>
     <div class='col'>
       <%= link_to "Forgot your password?", password_reset_path %>
