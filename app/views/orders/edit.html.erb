@@ -1,6 +1,59 @@
-<h1>Editing Order</h1>
+<%= form_with(model: @order) do |form| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <ul>
+        <% @order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render 'form', order: @order %>
+  <div class="profile-center">
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+    <div class="field col my-3">
+      <%= form.label :qty %>
+      <%= form.number_field :qty, class: 'form-control' %>
+    </div>
+
+    <div class="field col">
+      <%= form.label :deliver_date %>
+      <%= form.date_field :deliver_date, class: 'form-control' %>
+    </div>
+
+    <div class="field col my-3">
+      <%= form.label :deliver_flg %>
+      <%= form.check_box :deliver_flg %>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editorder_<%= @order.id %>">
+      Update
+    </button>
+
+  </div>
+
+  <div class="modal fade" id="editorder_<%= @order.id %>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Order Update Confirmation</h5>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to Update?</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+          <%= button_to 'Update',  edit_order_path(@order), :class => 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<div class="show-back">
+<%= link_to 'Back', orders_path, class: "btn btn-dark text-white" %>
+</div>
+
+

@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_05_29_052550) do
-=======
 ActiveRecord::Schema.define(version: 2022_05_30_080553) do
->>>>>>> movie_modal
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -50,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_080553) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "movie_id", null: false
     t.bigint "user_id", null: false
-    t.text "content"
+    t.string "content"
     t.index ["movie_id"], name: "index_comments_on_movie_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end

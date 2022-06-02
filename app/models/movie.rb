@@ -23,4 +23,7 @@ class Movie < ApplicationRecord
       @movies = Movie.all
     end
   end
+  has_many :likes, as: :likeable
+
+
 end
