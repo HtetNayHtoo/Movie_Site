@@ -24,4 +24,4 @@ jquery_ujs.start()
 
 require("jquery")
 require ("jquery_ujs")
-require ("raty-js")
+require("raty-js")
