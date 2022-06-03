@@ -63,5 +63,59 @@
 
 <br>
 
-<%= link_to 'New Order', movies_path, class: "btn btn-primary" %>
+<%= link_to 'New Order', movies_path, class: "btn btn-primary" %> <br/><br/>
+
+<canvas id="myChart" style="max-height:600px; max-width:600px;"></canvas>
+
+
+<script>
+
+var xValues = []
+// var yValues = [<%=@arrays["Action"]%>,<%=@arrays["Drama"]%>, <%=@arrays["Thriller"]%>]
+<% @movies.each do |movie|%>
+  xValues.push("<%= movie.category %>")
+<% end %>
+
+var yValues = []
+
+<% @movies.each do |movie|%>
+  yValues.push("<%=@arrays[movie.category]%>")
+<% end %>
+
+
+// <% @orders.each do |order| %>
+//   yValues.push("<%= order.id %>")
+// <% end %>
+
+var barColors = ["red", "green","blue","orange","brown"];
+
+
+  new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+    options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Order chart"
+    },
+    scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              } 
+            }]
+        }
+
+  }
+});
+</script>
+
+
 
