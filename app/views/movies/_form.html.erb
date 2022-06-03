@@ -11,69 +11,70 @@
     </div>
   <% end %>
 
-  <div class="container h-100 justify-content-center align-items-center">
-    <div class="row h-100 ">
-      <div class="field form-group row mb-3">
+  <div class="profile-center h-100 justify-content-center align-items-center">
+    <!--<div class="row h-100 ">-->
+      <div class="col">
         <%= form.label :title, class:'col-sm-2 col-form-label'%>
-        <div class="col-sm-4">
+        <!--<div class="col">-->
           <%= form.text_field :title , class:"form-control col-md-4"%>
-        </div>
+        <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <!--<div class="field form-group row mb-3">-->
+      <div class="col">
         <%= form.label :price, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
+        <!--<div class="col-sm-4">-->
           <%= form.number_field :price, class:"form-control col-md-4", :placeholder => '$' %>
-        </div>
+        <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <div class="col">
         <%= form.label :category, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
+        <!--<div class="col-sm-4">-->
           <%= form.text_field :category , class:"form-control col-md-4"%>
-        </div>
+        <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <div class="col">
         <%= form.label :director, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
+          <!--<div class="col-sm-4">-->
             <%= form.text_field :director, class:"form-control col-md-4" %>
-          </div>
+          <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <div class="col">
         <%= form.label :description, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-5">
+          <!--<div class="col-sm-5">-->
             <%= form.text_area :desc, class:"form-control col-md-4" %>
-          </div>
+          <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <div class="col my-2">
         <%= form.label :trailer_link, class:'col-sm-2 col-form-label' %>
-          <div class="col-sm-5">
+          <!--<div class="col-sm-5">-->
             <%= form.text_field :trailer_link, class:"form-control col-md-4" %>
-          </div>
+          <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <div class="col">
         <%= form.label :cast, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
+        <!--<div class="col-sm-4">-->
           <%= form.text_field :cast, class:"form-control col-md-4" %>
-        </div>
+        <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3">
+      <div class="col">
         <%= form.label :rotten_tomatoe, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
-        <%= form.text_field :rotten_tomatoe, class:"form-control col-md-4" %>
-        </div>
+        <!--<div class="col-sm-4">-->
+          <%= form.text_field :rotten_tomatoe, class:"form-control col-md-4" %>
+        <!--</div>-->
       </div>
 
-      <div class="field form-group row mb-3 ">
+      <div class="col">
         <%= form.label :imdb, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
-        <%= form.text_field :imdb, class:"form-control col-md-4" %>
-        </div>
+        <!--<div class="col-sm-4">-->
+          <%= form.text_field :imdb, class:"form-control col-md-4" %>
+        <!--</div>-->
       </div>
 
       <!--<div class="field form-group row mb-3">
@@ -83,20 +84,20 @@
         </div>
       </div>-->
 
-      <div class="field form-group row mb-3">
+      <div class="col my-2">
         <%= form.label :release_date, class:'col-sm-2 col-form-label' %>
-        <div class="col-sm-4">
-        <%= form.date_field :release_date, class:"form-control" %>
-        </div>
+        <!--<div class="col-sm-4">-->
+          <%= form.date_field :release_date, class:"form-control" %>
+        <!--</div>-->
       </div>
 
-      <div class="actions form-group">
-        <%= form.submit class:"btn btn-primary" %>
+      <div>
+        <%= form.submit "Confirm", class:"btn btn-primary" %>
         <!--<%= link_to 'Submit', 'new_movie_path',"data-toggle"=>"modal", "data-target" => "#confirmMovieModal", :class=>'btn button1 button2'%>-->
         <!--<%= link_to 'Create Movie', 'new_movie_path', "data-toggle"=>"modal", "data-target" => "#confirmMovieModal",:class=>'btn button1 button2' %>-->
         <%= link_to 'Back', movies_path, class:"btn btn-primary" %>
       </div>
-    </div>
+    <!--</div>-->
   </div>
 <% end %>
 
