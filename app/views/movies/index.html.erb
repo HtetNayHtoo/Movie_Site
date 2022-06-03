@@ -235,7 +235,7 @@
           <% end %>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-dark" %> 
+          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-outline-primary" %> 
           <% favourite = current_user.favourites.find_by(movie: movie)%>
             <% if favourite.nil? %>
                 <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success btn-sm" %> <br/>
@@ -256,8 +256,8 @@
             <p>Are you sure to delete?</p>
           </div>
           <div class="modal-footer">
-              <a href="#" data-dismiss="modal" class="btn button1">Cancel</a>
-              <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn button1 button2 ' %>
+              <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+              <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn btn-danger ' %>
           </div>
         </div>
       </div>
