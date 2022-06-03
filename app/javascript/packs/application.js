@@ -10,6 +10,7 @@ import "raty-js"
 import "channels"
 import "bootstrap"
 import "jquery"
+import "chartkick/chart.js"
 import jquery from "jquery"
 
 Rails.start()
