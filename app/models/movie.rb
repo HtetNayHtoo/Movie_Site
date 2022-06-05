@@ -4,8 +4,8 @@ class Movie < ApplicationRecord
   has_many :orders, :dependent => :destroy
   has_many :favourites, :dependent => :destroy
   has_one :movie_detail, :dependent => :destroy
-  validates :title, :price, :category, :poster_img, presence: true
-  validates :category, uniqueness: true
+  #validates :title, :price, :category, presence: true
+  #validates :category, uniqueness: true
 
   def self.search(search)
     if search.present?
