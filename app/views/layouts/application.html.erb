@@ -20,6 +20,7 @@
   </head>
   
   <body>
+  <div style="max-width:100%;">
   <% if current_user %>
     <%= render 'shared/header' %>
     <div class="container">
@@ -27,8 +28,9 @@
       <%= render 'layouts/alerts' %>
     <% end %>
     <%= yield %>
+   
     </div>
-    <%= render 'shared/footer' %>
+     <%= render 'shared/footer' %>
   <% else %>
     <div class="container">
     <% if notice %>
@@ -37,5 +39,6 @@
     <%= yield %>
     </div>
   <% end %>
-   
+  </div>
+  </body>
 </html>

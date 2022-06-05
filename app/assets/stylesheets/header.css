@@ -1,20 +1,18 @@
-.navbar{
-    color:red;
-    background-color: green;
-}
-.active{
-    background-color:yellow;
-    color:#fff;
+.nav .navbar-nav .nav-item{
+  text-align: left;
 }
 .nav .navbar-nav .nav-item .nav-link {
-    color: yellow;
+    color: #fff;
   }
   
   .nav .navbar-nav .nav-item:hover,
-  .nav .navbar-nav .nav-item .active {
-    background-color:yellow;
+  .nav .navbar-nav .nav-item.active {
+    background-color:#fff;
+    border-radius:18px;
+    text-align: center;
+  
   }
   .nav .navbar-nav .nav-item:hover .nav-link,
   .nav .navbar-nav .nav-item.active .nav-link {
-    color:#fff;
+    color:#000;
   }
