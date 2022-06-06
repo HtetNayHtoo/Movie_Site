@@ -6,9 +6,6 @@
   .nav .navbar-nav .nav-item:hover,
   .nav .navbar-nav .nav-item.active {
     color:#fff;
-    border-radius:18px;
-    text-align: center;
-  
   }
   .nav .navbar-nav .nav-item:hover .nav-link,
   .nav .navbar-nav .nav-item.active .nav-link {

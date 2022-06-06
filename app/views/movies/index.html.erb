@@ -207,28 +207,29 @@
     <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>-->
     <div class="d-lg-flex justify-content-center mt-3">
-      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "col-xs-2 mx-2" %>
-      <%= submit_tag "Search", class:"btn btn-outline-success btn-sm" %>
+      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "search-form col-xs-2 mx-2" %>
+      <%= submit_tag "Search", class: "s-btn" %>
     </div>
   </div>
 <% end %>
 
 
-<div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
+<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4 mt-2">
   <% @movies.each do |movie|%>
     <div class="col">
-      <div class="card h-100 text-center my-2 card-shadow" >
+      <div class="card text-center my-2 card-shadow" >
           <% movie.poster_img.each do |poster_img| %>
-            <%= link_to image_tag(poster_img, style: "height:300px;", class: "img-thumbnail"),movie %>
+            <%= link_to image_tag(poster_img, style: "width:100%;", class: "img-thumbnail"),movie %>
           <% end %>
-        <div class="card-body text-start">
+        <div class="card-body text-start" style=" height: 210px;">
           <h5 class="card-title">Title : <%= movie.title %></h5>
-          <p class="card-text">Category : <%= movie.category %></p>
-          <p class="card-text">Price : $<%= movie.price %></p>
-          <p class="card-text d-flex justify-content-between">
-          <%= link_to 'More Details', movie, class: "btn btn-outline-success" %>
+          <p class="card-text" style="font-size:14px;">Category : <%= movie.category %></p>
+          <p class="card-text" style="font-size:14px;">Price : $<%= movie.price %></p>
+          <p class="card-text d-flex justify-content-between" style="font-size:14px;">
+          <%= link_to 'More Detail', movie, class: "btn btn-sm btn-outline-dark" %>
+          
           <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
-          </p>
+         
           <% if current_user.user_type == "Admin" %>
             <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2 btn-sm' %> | 
             <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2 btn-sm' %> 

@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :require_user_login
   before_action :set_movie, only: %i[ edit update destroy ]
-
   # GET /movies or /movies.json
   def index
     @movies = Movie.all
