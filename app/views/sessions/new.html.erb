@@ -1,7 +1,7 @@
 <% if !current_user %>
   <p id='alert'><%= alert %></p>
 <div class="login-center">
-  <h1 style="text-align:center;">Login</h1>
+  <h1 class="text-color text-center">Login</h1>
   <%= form_tag sessions_path do |form| %>
   <div class='field col'>
     <%= label_tag :email %>
@@ -13,7 +13,7 @@
   </div>
   <div class='row mt-3'>
     <div class="actions col">
-      <%= submit_tag 'Login', class: 'btn btn-primary text-white' %>
+      <%= submit_tag 'Login', class: 'btn text-white btn-shadow btn-width' %>
     </div>
     <div class='col col-width'>
       <%= link_to "Forgot your password?", password_reset_path %>

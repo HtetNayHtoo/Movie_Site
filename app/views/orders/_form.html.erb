@@ -14,7 +14,6 @@
   <div class="profile-center">
 
     <div class="col">
-      <%= form.label :movie_img %>
       <% current_movie.poster_img.each do |poster_img| %>
         <%= image_tag(poster_img, height: "200px", class:"card-img-top") %>
       <% end %>
@@ -46,6 +45,7 @@
       </div>
     </div>
 
-    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', movies_path, class: "btn btn-dark text-white" %>
+    <%= form.submit class: "btn btn-shadow text-white ms-2" %>
   </div>
 <% end %>

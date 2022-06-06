@@ -1,6 +1,6 @@
-<div class="table-responsive-sm table-responsive-md">
-  <table class="table table-striped mt-4">
-    <thead class="table-dark">
+<div class="table-responsive-sm table-responsive-md mt-5">
+  <table class="table table-striped">
+    <thead class="thead-color">
       <tr>
         <th>Title</th>
         <th>Total price</th>
@@ -14,10 +14,10 @@
       </tr>
     </thead>
 
-    <tbody>
+    <tbody class="table-shadow">
       <% @orders.each do |order| %>
         <tr>
-          <td><%= order.movie.title %></td>
+          <td class="border-left"><%= order.movie.title %></td>
           <td><%= order.movie.price * order.qty %></td>
           <td><%= order.qty %></td>
           <% if current_user.user_type == "Admin" %>
@@ -25,7 +25,7 @@
           <% end %>
           <td><%= order.deliver_date %></td>
           <td><%= order.deliver_flg %></td>
-          <td>
+          <td class="border-right">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Operations
@@ -63,10 +63,11 @@
 
 <br>
 
-<%= link_to 'New Order', movies_path, class: "btn btn-primary" %> <br/><br/>
+<%= link_to 'New Order', movies_path, class: "btn btn-shadow text-white" %> <br/><br/>
+
+<% if current_user.user_type == "Admin" %>
 
 <canvas id="myChart" style="max-height:600px; max-width:600px;"></canvas>
-
 
 <script>
 
@@ -116,6 +117,7 @@ var barColors = ["red", "green","blue","orange","brown"];
   }
 });
 </script>
+<% end %>
 
 
 
