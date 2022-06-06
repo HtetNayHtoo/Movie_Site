@@ -206,9 +206,12 @@
     <% end %>
     <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>-->
-    <div class="d-lg-flex justify-content-center mt-3">
-      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "col-xs-2 mx-2" %>
-      <%= submit_tag "Search", class:"btn btn-outline-success btn-sm" %>
+    <div class="d-lg-flex justify-content-center position-relative mt-3">
+      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "search-box col-xs-2 mx-2 rounded-pill" %>
+
+        <%= button_tag type:'submit', class: "btn border-none custom-search" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
     </div>
   </div>
 <% end %>

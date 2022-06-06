@@ -180,11 +180,35 @@ textarea {
   resize: none!important;
 }
 
+.custom-search {
+  position: absolute;
+  top: 4px;
+  right: 20px;
+  padding: 0!important;
+}
+
+.search-box {
+  box-shadow: 0 0 3px #1F4976;
+  border: none;
+  padding: 5px 10px;
+}
+.search-box:hover {
+    box-shadow: 0 0 6px #1F4976;
+}
+
+.search-box:focus-visible {
+  outline: none;
+}
+
   /*  Ipad  */
 @media screen and (min-width: 768px) and (max-width: 1119.9px) {
   .profile-center {
     width: 400px;
     margin: 20px auto 0;
+  }
+  .custom-search {
+    left: 135px;
+    width: 100px;
   }
 }
 
@@ -208,5 +232,9 @@ textarea {
 
   .show-center {
     width: 100%;
+  }
+  .custom-search{
+    width: 100px;
+    left: 136px;
   }
 }
