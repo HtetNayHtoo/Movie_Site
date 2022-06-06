@@ -13,3 +13,42 @@
 //       column-count: 5;
 //     }
 //   }
+.search-form{
+    border-radius: 20px;
+    border: 2px solid #ced4da;
+    padding-left: 5px;
+
+}
+.s-btn{
+    border-radius: 20px;
+    color:#212529;
+    padding: 0px 10px;
+    background-color: #fff;
+    border: 2px solid #ced4da;
+
+}
+.s-btn:hover{
+    background-color: #323131;
+    color:#fff;
+}
+
+.trailer{
+    text-decoration: none;
+    color: #fff;
+    padding:5px 15px;
+    font-size:20px;
+    border-radius: 20px;
+}
+.trailer:hover{
+    color: #fff;;
+    box-shadow: 0 0 5px #1F4976;
+}
+.row-cols-1 .img-thumbnail{
+    height:450px;
+}
+.row-cols-lg-4 .img-thumbnail{
+    height: 300px;
+}
+.row-cols-md-2 .img-thumbnail{
+    height: 370px;
+ }

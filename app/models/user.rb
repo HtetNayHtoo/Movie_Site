@@ -5,6 +5,6 @@ class User < ApplicationRecord
   has_one_attached :profile_img
   has_many :comments, :dependent => :destroy
   has_many :orders, :dependent => :destroy
-  has_many :favourites
+  has_many :favourites,:dependent => :destroy
   has_many :likes, :dependent => :destroy
 end
