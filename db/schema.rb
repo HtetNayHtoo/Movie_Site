@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 2022_05_30_080553) do
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "content", limit: 45, null: false
     t.integer "react_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "movie_id", null: false
     t.bigint "user_id", null: false
-    t.string "content"
     t.index ["movie_id"], name: "index_comments_on_movie_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_080553) do
   end
 
   create_table "movie_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "release_date"
+    t.date "release_date"
     t.string "director"
     t.string "trailer_link"
     t.string "cast"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_080553) do
     t.string "password_digest"
     t.integer "phone"
     t.string "address"
-    t.datetime "dob"
+    t.date "dob"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

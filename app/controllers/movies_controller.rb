@@ -66,6 +66,7 @@ class MoviesController < ApplicationController
           format.html { redirect_to movies_path(@movie), notice: "Movie was successfully created." }
           format.json { render :show, status: :created, location: @movie }
       else
+        flash.now[:notice] = "Something is wrong !!!"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
@@ -81,6 +82,7 @@ class MoviesController < ApplicationController
         format.html { redirect_to movies_path(@movie), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }
       else
+        flash.now[:notice] = "Something is wrong !!!"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end

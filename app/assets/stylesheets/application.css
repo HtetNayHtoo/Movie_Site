@@ -13,3 +13,200 @@
  *= require_tree .
  *= require_self
  */
+
+ .custom-alert {
+  margin-top: 2px; 
+  box-shadow:
+      inset 0 -3em 3em rgba(0,0,0,0.1),
+            0 0  0 2px rgb(255,255,255),
+            0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.login-center {
+  width: 450px;
+  margin: 150px auto 0;
+  padding: 20px;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.form-control {
+  border-radius: 15px!important;
+}
+
+.btn-shadow {
+  background: #1F4976!important;
+}
+.btn:focus {
+    box-shadow: none!important ;
+    outline: 0;
+}
+
+.btn-width {
+  width: 90px;
+}
+.not-found {
+  margin-top: 250px;
+  text-align: center;
+}
+
+.text-color {
+  color: #1F4976;
+}
+
+.navbar-dark .navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none!important;
+    text-decoration: none;
+    outline: 0;
+}
+
+.profile-center {
+  width: 400px;
+  margin: 30px auto 0;
+  padding: 20px;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.show-center {
+  width: 400px;
+  margin: 30px auto 0;
+  padding: 20px;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.pro-img-div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.profile-round {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.profile-edit {
+  display: flex;
+  justify-content: center;
+}
+
+.show-back {
+  width: 395px;
+  margin: 15px auto 0;
+}
+
+.img-width{
+  width: 50px;
+  height: 50px;
+}
+
+.required::after {
+  position: relative;
+  bottom: 2px;
+  margin-left: 5px;
+  color: #ff0000;
+  font-family: 'Font awesome 5 free';
+  font-size: 10px;
+  font-weight: 900;
+  content: '\f621';
+}
+.thead-color {
+  background: #1F4976;
+  color: #fff;
+}
+th{
+  padding: 15px!important ;
+}
+
+.table-shadow {
+  box-shadow: inset 0em 0em rgb(0 0 0 / 10%), 0 0 0 0px rgb(255 255 255), 0.1em 0.1em 1em rgb(0 0 0 / 30%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.border-left{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.border-right{
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.checkbox {
+  display: inline;
+  position: relative;
+  top: 3px;
+  margin-left: 10px;
+}
+input[type=checkbox]{
+  width: 15px;
+  height: 15px;
+}
+
+.btn-order {
+  border: 1px solid #1F4976!important;
+  color: #1F4976!important;
+}
+.btn-order:hover {
+  background: #1F4976!important;
+  color: #fff!important;
+}
+
+.card-shadow {
+  border: 1px solid #1F4976;
+  box-shadow:
+       inset 0 1em 3em rgba(0,0,0,0.1),
+             0 0  0 0px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+textarea {
+  resize: none!important;
+}
+
+  /*  Ipad  */
+@media screen and (min-width: 768px) and (max-width: 1119.9px) {
+  .profile-center {
+    width: 400px;
+    margin: 20px auto 0;
+  }
+}
+
+@media screen and (max-width:767.9px) {
+  .login-center {
+    width: 100%;
+    margin: 150px auto 0;
+  }
+
+  .col-width {
+    flex: none!important;
+    width: 70%!important;
+  }
+  .not-found {
+    margin-top: 250px;
+  }
+  .profile-center {
+    width: 100%;
+    margin: 20px auto 0;
+  }
+
+  .show-center {
+    width: 100%;
+  }
+}
