@@ -12,7 +12,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
@@ -78,8 +78,8 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
    address:              'smtp.gmail.com',
    port:                 587,
-   user_name:            'hninsuhlaing1700299@gmail.com',
-   password:             'rqiavacwopgpgijr',
+   user_name:            '',
+   password:             '',
    authentication:       'plain',
    enable_starttls_auto: true  
 }

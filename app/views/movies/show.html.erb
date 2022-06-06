@@ -118,13 +118,13 @@
 
 
 <div class="card mb-3" style="max-width: 100%;">
-  <div class="row g-0">
-    <div class="col-md-4">
+  <div class="d-lg-flex d-sm-block justify-content-evenly g-0">
+    <div class="col-md-4" >
       <% @movie.poster_img.each do |poster_img| %>
           <%= image_tag(poster_img, class: "img-thumbnail", style: "height: 400px;") %>
         <% end %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <div class="card-body">
 
       <table class="table table-borderless">

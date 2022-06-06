@@ -33,10 +33,10 @@
      <%= render 'shared/footer' %>
   <% else %>
     <div class="container">
-    <% if notice %>
-      <%= render 'layouts/alerts' %>
-    <% end %>
-    <%= yield %>
+      <% if notice %>
+        <%= render 'layouts/alerts' %>
+      <% end %>
+      <%= yield %>
     </div>
   <% end %>
   </div>

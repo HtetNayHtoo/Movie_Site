@@ -1,17 +1,8 @@
 <%= form_with(model: user ,url: confirm_users_path(user)) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 <div class="profile-center">
+<h1 class="text-color text-center">Signup</h1>
   <div class="col">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
@@ -29,13 +20,29 @@
   <% end %>
 
   <div class="col">
-    <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control" %>
+    <% if user.errors[:email].any? %>
+      <%= form.label :email, class: "required text-danger" %>
+      <%= form.text_field :email, class: "form-control border-danger shadow-none" %>
+      <% user.errors.full_messages_for(:email).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    <% else %>
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control" %>
+    <% end %> 
   </div>
 
   <div class="col my-2">
+  <% if user.errors[:password].any? %>
+    <%= form.label :password, class: "required text-danger" %>
+    <%= form.password_field :password, class: "form-control border-danger shadow-none" %>
+    <% user.errors.full_messages_for(:password).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    <% else %>
     <%= form.label :password %>
     <%= form.password_field :password, class: "form-control" %>
+    <% end %>
   </div>
 
   <div class="col">
@@ -53,8 +60,14 @@
     <%= form.date_field :dob, class: "form-control" %>
   </div>
 
-  <div>
-   <%= form.submit class: "btn btn-primary" %>
+  <div class="">
+  <% if current_user %>
+    <%= link_to 'Back', users_path, class: "btn btn-dark text-white btn-width" %>
+  <% else %>
+    <%= link_to 'Back', login_path, class: "btn btn-dark text-white" %>
+  <% end %>
+   <%= form.submit 'Confirm', class: "btn btn-shadow text-white ms-2 btn-width" %>
+
   </div>
 
 </div>

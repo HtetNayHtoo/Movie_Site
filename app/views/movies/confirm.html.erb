@@ -1,212 +1,77 @@
-<!--<p>name: <%= @movie.title%></p>
-<p>age: <%= @movie.category%></p>
-<p>Email: <%= @movie.price%></p>
-#Up to this point for display
+<%= form_with(model: @movie, local: true) do |form| %>
 
-#From here for storage
-<%= form_with(model: @movie, local: true) do |f| %>
-  <%= f.hidden_field :title %>
-  <%= f.hidden_field :category %>
-  <%= f.hidden_field :price %>
-  <%= f.submit "Send" %>
-  <%= f.submit "Return", name: :back %>
-<% end %>-->
-
-
-<!--<div class="modal-body">
-    <div class="col-lg-12">
-        <p>
-        <strong>Movie Title:</strong>
-        <%= @movie.title %>
-        </p>
-
-        <p>
-        <strong>Category:</strong>
-        <%= @movie.category %>
-        </p>
-
-        <p>
-        <strong>Price:</strong>
-        <%= @movie.price %>
-        </p>
-    </div>
-
-    <%= form_with(model: @movie, local: true) do |f| %>
-      <%= f.hidden_field :title %>
-      <%= f.hidden_field :category %>
-      <%= f.hidden_field :price %>
-      <%= f.submit "Send" %>
-  <%= f.submit "Return", name: :back %>
-<% end %>
-</div>
-<div class='modal-footer'>
-    <button type="button" class="btn btn-secondary btn-lg close-modal" data-bs-dismiss="modal">Close</button>
-</div>-->
-
-<div class="container h-100">
-  <div class="row h-100 justify-content-center align-items-center">
-    <div class="col-10 col-md-8 col-lg-6">
-      <!--<h1>Confirmation</h1>
-
-      <p>
-      <strong>Movie Title:</strong>
-      <%= @movie.title %>
-      </p>
-
-      <p>
-      <strong>Category:</strong>
-      <%= @movie.category %>
-      </p>
-
-      <p>
-      <strong>Price:</strong>
-      <%= @movie.price %>
-      </p>
-
-      <p>
-      <strong>Description:</strong>
-      <%= @movie.movie_detail.desc %>
-      </p>
-
-      <p>
-      <strong>Director:</strong>
-      <%= @movie.movie_detail.director %>
-      </p>
-
-      <p>
-      <strong>Cast:</strong>
-      <%= @movie.movie_detail.cast %>
-      </p>
-
-      <p>
-      <strong>Trailer:</strong>
-      <%= @movie.movie_detail.trailer_link %>
-      </p>
-
-      <p>
-      <strong>IMDB:</strong>
-      <%= @movie.movie_detail.imdb %>
-      </p>
-
-      <p>
-      <strong>Rotten Tomatoe:</strong>
-      <%= @movie.movie_detail.rotten_tomatoe %>
-      </p>
-
-      <p>
-      <strong>Release Date:</strong>
-      <%= @movie.movie_detail.release_date %>
-      </p>-->
-
-      <div class="card">
-        <div class="card-header text-center card-title">
-         Confirmation
-        </div>
-        <div class="card-body">
-          <table class="table table-responsive table-borderless card-text">
-            <thead>
-              <tr>
-                <th>
-                <strong>Movie Title:</strong>
-                </th>
-                <th>
-                  <%= @movie.title %>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                <strong>Category:</strong>
-                </td>
-                <td>
-                <%= @movie.category %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <strong>Price:</strong>
-                </td>
-                <td>
-                <%= @movie.price %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <strong>Description:</strong>
-                </td>
-                <td>
-                <%= @movie.movie_detail.desc %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <strong>Director:</strong>
-                </td>
-                <td>
-                <%= @movie.movie_detail.director %>
-                </td>
-              <tr>
-              <tr>
-                <td>
-                <strong>Cast:</strong>
-                </td>
-                <td>
-                <%= @movie.movie_detail.cast %>
-                </td>
-              </tr>
-              <td>
-              <strong>Trailer:</strong>
-              </td>
-              <td>
-              <%= @movie.movie_detail.trailer_link %>
-              </td>
-              <tr>
-                <td>
-                <strong>IMDB:</strong>
-                </td>
-                <td>
-                <%= @movie.movie_detail.imdb %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <strong>Rotten Tomatoe:</strong>
-                </td>
-                <td>
-                <%= @movie.movie_detail.rotten_tomatoe %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <strong>Release Date:</strong>
-                </td>
-                <td>
-                <%= @movie.movie_detail.try(:release_date).try(:strftime, "%m/%d/%Y") %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      
-
-      <%= form_with(model: @movie, local: true) do |f| %>
-        <%= f.hidden_field :title %>
-        <%= f.hidden_field :category %>
-        <%= f.hidden_field :price %>
-        <%= f.hidden_field :desc %>
-        <%= f.hidden_field :director%>
-        <%= f.hidden_field :cast %>
-        <%= f.hidden_field :trailer_link %>
-        <%= f.hidden_field :imdb%>
-        <%= f.hidden_field :rotten_tomatoe%>
-        <%= f.hidden_field :release_date%>
-        <%= f.file_field :poster_img, multiple: true, class:"form-control-file" %><br/><br/>
-        <%= f.submit class: 'btn btn-primary button1 button2 mb-2' %>
-        <%= link_to 'Back', new_movie_path, class: 'btn btn-primary button1 button2 mb-2' %>
-      <% end %>
-      </div>
-      </div>
-    </div>
+<div class="profile-center">
+<h1 class="text-color">Confirmation</h1>
+  <div class="col">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control", :readonly => true %>
   </div>
+
+  <div class="col">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: "form-control", :readonly => true %>
+  </div>
+
+  <div class="col">
+    <%= form.label :category %>
+    <%= form.text_field :category, class: "form-control", :readonly => true  %>
+  </div>
+
+  <% if @movie.movie_detail.director.present? %>  
+    <div class="col">
+      <%= form.label :director %>
+      <%= form.text_field :director, value: @movie.movie_detail.director , class: "form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <% if @movie.movie_detail.desc.present? %>
+    <div class="col my-2">
+      <%= form.label :desc %>
+      <%= form.text_area :desc, value: @movie.movie_detail.desc, class: "form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <% if @movie.movie_detail.trailer_link.present? %>
+    <div>
+      <%= form.label :trailer_link %>
+      <%= form.text_field :trailer_link ,value: @movie.movie_detail.trailer_link, class:"form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <% if @movie.movie_detail.cast.present? %>
+    <div class="col my-2">
+      <%= form.label :cast %>
+      <%= form.text_field :cast, value: @movie.movie_detail.cast, class: "form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <% if @movie.movie_detail.rotten_tomatoe.present? %>
+    <div class="col">
+      <%= form.label :rotten_tomatoe %>
+      <%= form.text_field :rotten_tomatoe, value: @movie.movie_detail.rotten_tomatoe ,class: "form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <% if @movie.movie_detail.imdb.present? %>
+    <div class="col">
+      <%= form.label :imdb %>
+      <%= form.text_field :imdb, value: @movie.movie_detail.imdb, class: "form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <% if @movie.movie_detail.release_date.present? %>    
+    <div class="col">
+      <%= form.label :release_date %>
+      <%= form.date_field :release_date, value: @movie.movie_detail.release_date, class:"form-control", :readonly => true %>
+    </div>
+  <% end %>
+
+  <div class="col mt-2 mb-3">
+    <%= form.label :poster_img %>
+    <%= form.file_field :poster_img, class: "form-control", multiple: true %>
+  </div>
+
+    <%= link_to 'Back', new_movie_path, class: "btn btn-dark text-white" %>
+    <%= form.submit "Create Movie", class: "btn btn-shadow text-white ms-2" %>
 </div>
+  <% end %>
