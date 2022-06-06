@@ -1,9 +1,10 @@
 <%= form_with(model: @user, local: true) do |form| %>
+
 <div class="profile-center">
-<h1>Confirmation</h1>
+<h1 class="text-color">Confirmation</h1>
   <div class="col">
     <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.text_field :name, class: "form-control", :readonly => true %>
   </div>
 
   <% if current_user.present? %>
@@ -19,28 +20,39 @@
 
   <div class="col">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control" %>
+    <%= form.text_field :email, class: "form-control", :readonly => true %>
   </div>
 
   <div class="col my-2">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password, class: "form-control" %>
+    <% if @user.errors.any? %>
+      <%= form.label :password_confirmation, class: "required text-danger" %>
+      <%= form.password_field :password, class: "form-control border-danger shadow-none" %>
+    <% else %>
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password, class: "form-control" %>
+    <% end %>
   </div>
 
+<% if @user.phone.present? %>
   <div class="col">
     <%= form.label :phone %>
-    <%= form.number_field :phone, class: "form-control" %>
+    <%= form.number_field :phone, class: "form-control", :readonly => true %>
   </div>
+<% end %>
 
+<% if @user.address.present? %>
   <div class="col my-2">
     <%= form.label :address %>
-    <%= form.text_field :address, class: "form-control" %>
+    <%= form.text_field :address, class: "form-control", :readonly => true %>
   </div>
+<% end %>
 
-  <div class="col">
+<% if @user.dob.present? %>
+    <div class="col">
     <%= form.label :dob %>
-    <%= form.date_field :dob, class: "form-control" %>
+    <%= form.date_field :dob, class: "form-control", :readonly => true %>
   </div>
+<% end %>
 
   <div class="col mt-2 mb-3">
     <%= form.label :profile_img %>
@@ -48,6 +60,6 @@
   </div>
 
     <%= link_to 'Back', signup_path, class: "btn btn-dark text-white" %>
-    <%= form.submit "Confirm", class: "btn btn-primary" %>
+    <%= form.submit "Create User", class: "btn btn-shadow text-white ms-2" %>
 </div>
   <% end %>

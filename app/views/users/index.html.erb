@@ -1,6 +1,7 @@
-<div class="table-responsive-sm table-responsive-md">
-  <table class="table table-striped mt-5">
-    <thead class="table-dark">
+<% if current_user.user_type == "Admin" %>
+<div class="table-responsive-sm table-responsive-md mt-5">
+  <table class="table table-striped">
+    <thead class="thead-color">
       <tr>
         <th>Name</th>
         <% if current_user.user_type == "Admin" %>
@@ -15,7 +16,7 @@
       </tr>
     </thead>
 
-    <tbody>
+    <tbody class="table-shadow">
       <% @users.each do |user| %>
         <tr>
           <td><%= user.name %></td>
@@ -65,7 +66,9 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path, class: "btn btn-primary text-white" %>
+<%= link_to 'New User', new_user_path, class: "btn btn-shadow text-white" %>
+
+<% end %>
 
    
         

@@ -200,15 +200,15 @@
 
 
 <%= form_tag(movies_path, :method => "get", class:"form-group row") do %>
-  <div class="col-xs-2 d-flex justify-content-between align-items-center">
+  <div class="col-xs-2 d-lg-flex d-sm-block d-md-block justify-content-between align-items-center">
     <% if current_user.user_type == "Admin" %>
-      <%= link_to"New Movie", new_movie_path, class: 'btn btn-primary mt-3'%>
+      <%= link_to"New Movie", new_movie_path, class: 'btn btn-shadow text-white mt-3'%>
     <% end %>
     <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>-->
-    <div class="d-flex mt-3">
-      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "col-xs-2 me-2" %>
-      <%= submit_tag "Search", class:"btn btn-outline-success btn-sm my-2 my-sm-0"%>
+    <div class="d-lg-flex justify-content-center mt-3">
+      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "col-xs-2 mx-2" %>
+      <%= submit_tag "Search", class:"btn btn-outline-success btn-sm" %>
     </div>
   </div>
 <% end %>
@@ -217,7 +217,7 @@
 <div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
   <% @movies.each do |movie|%>
     <div class="col">
-      <div class="card h-100 text-center my-2" style="width: 15rem;" >
+      <div class="card h-100 text-center my-2 card-shadow" >
           <% movie.poster_img.each do |poster_img| %>
             <%= link_to image_tag(poster_img, style: "height:300px;", class: "img-thumbnail"),movie %>
           <% end %>
@@ -235,7 +235,7 @@
           <% end %>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-dark" %> 
+          <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-order" %> 
           <% favourite = current_user.favourites.find_by(movie: movie)%>
             <% if favourite.nil? %>
                 <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success btn-sm" %> <br/>
@@ -256,8 +256,8 @@
             <p>Are you sure to delete?</p>
           </div>
           <div class="modal-footer">
-              <a href="#" data-dismiss="modal" class="btn button1">Cancel</a>
-              <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn button1 button2 ' %>
+              <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+              <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn btn-danger ' %>
           </div>
         </div>
       </div>

@@ -35,7 +35,8 @@ class UsersController < ApplicationController
         format.html { redirect_to login_path, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:notice] = "Please enter your password"
+        format.html { render :confirm, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
+        flash.now[:notice] = "Something is wrong !!!"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

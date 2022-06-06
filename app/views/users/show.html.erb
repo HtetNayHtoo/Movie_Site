@@ -1,6 +1,6 @@
 <% if current_user.user_type == "User" %>
 
-  <div class="profile-center">
+<div class="show-center">
   <div class="pro-img-div">
     <% if @user.profile_img.attached? %>
       <%= image_tag @user.profile_img, class: "profile-round" %>
@@ -19,25 +19,30 @@
       <%= @user.email %>
     </p>
   </div>
-  <div class="col">
-    <p class="form-control">
-      <strong>Phone:</strong>
-      <%= @user.phone %>
-    </p>
-  </div>
-  <div class="col">
-    <p class="form-control">
-      <strong>Address:</strong>
-      <%= @user.address %>
-    </p>
-  </div>
-
-  <div class="col">
-    <p class="form-control">
-      <strong>Dob:</strong>
-      <%= @user.dob %>
-    </p>
-  </div>
+  <% if @user.phone.present? %>
+    <div class="col">
+      <p class="form-control">
+        <strong>Phone:</strong>
+        <%= @user.phone %>
+      </p>
+    </div>
+  <% end %>
+  <% if @user.address.present? %>
+    <div class="col">
+      <p class="form-control">
+        <strong>Address:</strong>
+        <%= @user.address %>
+      </p>
+    </div>
+  <% end %>
+  <% if @user.dob.present? %>
+    <div class="col">
+      <p class="form-control">
+        <strong>Dob:</strong>
+        <%= @user.dob %>
+      </p>
+    </div>
+  <% end %>
    <div class="d-flex justify-content-end">
     <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-sm btn-outline-secondary mr-3" %>
    </div>
@@ -45,7 +50,7 @@
 
 <% elsif current_user.user_type == "Admin" %>
 
-<div class="profile-center">
+<div class="show-center">
   <div class="col">
     <div class="pro-img-div">
     <% if @user.profile_img.attached? %>
