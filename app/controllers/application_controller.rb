@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :movie
-
+  
   helper_method :current_user
     def current_user
       if session[:user_id]
@@ -25,4 +25,14 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  def set_no_cache
+    response.headers['Cache-Control'] = 'no-cache, no-store,
+                                        max-age=0, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = 'Fri, 01 Jan 1990 00:00:00 GMT'
+  end
+
+  def require_user_login
+    render status: 500 if current_user.nil?
+  end
 end
