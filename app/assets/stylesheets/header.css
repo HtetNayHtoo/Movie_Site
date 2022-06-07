@@ -1,3 +1,6 @@
+.navbar-brand {
+    margin-left: 80px;
+}
 .nav .navbar-nav .nav-item .nav-link {
     color: #ccc;
 }
@@ -10,4 +13,14 @@
 .nav .navbar-nav .nav-item:hover .nav-link,
 .nav .navbar-nav .nav-item.active .nav-link {
     color: #fff;
+}
+@media screen and (min-width: 768px) and (max-width: 1119.9px) {
+    .navbar-brand {
+        margin-left: 0;
+    }
+}
+@media screen and (max-width:767.9px) {
+    .navbar-brand {
+        margin-left: 0;
+    }
 }
