@@ -1,0 +1,43 @@
+input[type="checkbox"] {
+    display: none;
+}
+li{
+    list-style: none;
+}
+.l1 {
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+    color: #212529;
+    padding-top:2px;
+}
+ 
+.l1:before, .l1:after {
+    font-family: FontAwesome;
+    font-size: 18px;
+    /*absolutely positioned*/
+    position: absolute; top: 0; left: -30px; right: 30px;
+}
+.l1:before {
+    content: '\f096'; /*checkbox unchecked */
+}
+.l1:after {
+    content: '\f00c';
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0.5;
+    font-size: 17px;
+    top: 2px;
+    left: -29px;
+    color: #1F4976;
+   
+ 
+-webkit-transition: all 0.50s;
+    -moz-transition: all 0.50s;
+    -o-transition: all 0.50s;
+     transition: all 0.50s;
+}
+input[type="checkbox"]:checked + .l1:after {
+    max-width: 25px;
+    opacity: 1;
+}

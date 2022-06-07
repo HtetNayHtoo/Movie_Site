@@ -47,10 +47,12 @@
     </div>
 
     <div class="field col my-3">
-      <%= form.label :deliver_flg %>
-      <div class="checkbox">
+      <ul>
+      <li>
       <%= form.check_box :deliver_flg %>
-      </div>
+      <%= form.label :deliver_flg ,class:'l1' %>
+      </li>
+      </ul>
     </div>
 
     <%= form.submit 'Confirm', class: "btn btn-shadow text-white" %>

@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
 
     if current_user.user_type == "Admin"
-       @orders = OrderService.index
+       @pagy,@orders = pagy(OrderService.index,items: 4)
     else
       @orders = current_user.orders
       OrderMailer.order_list(current_user.email,@orders).deliver_now

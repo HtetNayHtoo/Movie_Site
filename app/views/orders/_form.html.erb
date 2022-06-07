@@ -39,10 +39,12 @@
     </div>
 
     <div class="field col my-3">
-      <%= form.label :deliver_flg %>
-      <div class="checkbox">
-        <%= form.check_box :deliver_flg %>
-      </div>
+      <ul>
+      <li>
+      <%= form.check_box :deliver_flg %>
+      <%= form.label :deliver_flg , class:'l1' %>
+      </li>
+      </ul>
     </div>
 
     <%= link_to 'Back', movies_path, class: "btn btn-dark text-white" %>
