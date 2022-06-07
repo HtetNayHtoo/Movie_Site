@@ -13,16 +13,6 @@ class OrdersController < ApplicationController
     group by(`category`)";
     @arrays = ActiveRecord::Base.connection.execute(@sql).to_h;
 
-    
-
-    # SELECT 
-    # movies.category as `category`,
-    # COUNT(orders.id) as `count`
-    # FROM movie.orders 
-    # INNER JOIN movie.movies ON movies.id= orders.movie_id
-    # group by(`category`)
-
-
     if current_user.user_type == "Admin"
        @pagy,@orders = pagy(OrderService.index,items: 4)
     else
