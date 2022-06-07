@@ -35,7 +35,7 @@
            <%= link_to 'User List', users_path, class: "nav-link" %>
         </li>
 
-        <li class="ms-3">
+        <li class="ms-4">
            <%= link_to 'Log Out', logout_path, class: "btn btn-sm btn-danger text-white mt-1" %>
         </li>
       </ul>
@@ -44,7 +44,7 @@
         <li class="nav-item ms-5 <%= is_active?(movies_path)%>">
           <%= link_to 'Home', movies_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item dropdown ms-4">
+        <li class="nav-item dropdown ms-5">
           <a class="nav-link dropdown-toggle" href="#" id="navMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Category
           </a>
@@ -65,7 +65,7 @@
         <li class="nav-item ms-5 <%= is_active?(current_user)%> ">
         <%= link_to 'Profile', current_user, class: 'nav-link' %>
         </li>
-        <li class="ms-3">
+        <li class="ms-5">
           <%= link_to 'Log Out', logout_path, class: "btn btn-sm btn-danger text-white mt-1" %>
         </li>
       </ul>

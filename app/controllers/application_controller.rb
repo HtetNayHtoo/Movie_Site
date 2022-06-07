@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_no_cache
   before_action :movie
   
   helper_method :current_user
