@@ -30,6 +30,7 @@
          
           <% if current_user.user_type == "Admin" %>
             <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2 btn-sm' %> | 
+            <br>
             <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2 btn-sm' %> 
           <% end %>
         </div>

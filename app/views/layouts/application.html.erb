@@ -21,15 +21,14 @@
   </head>
   
   <body>
-  <div style="max-width:100%;">
+  
   <% if current_user %>
     <%= render 'shared/header' %>
-    <div class="container">
-    <% if notice %>
-      <%= render 'layouts/alerts' %>
-    <% end %>
-    <%= yield %>
-   
+    <div class="container" style="min-height: 565px;" >
+      <% if notice %>
+        <%= render 'layouts/alerts' %>
+      <% end %>
+      <%= yield %>
     </div>
      <%= render 'shared/footer' %>
   <% else %>
