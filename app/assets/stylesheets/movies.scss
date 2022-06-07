@@ -40,15 +40,19 @@
     border-radius: 20px;
 }
 .trailer:hover{
-    color: #fff;;
+    color: #fff;
     box-shadow: 0 0 5px #1F4976;
 }
 .row-cols-1 .img-thumbnail{
     height:450px;
 }
-.row-cols-lg-4 .img-thumbnail{
-    height: 300px;
+.row-cols-lg-3 .img-thumbnail{
+    height:318px;
 }
 .row-cols-md-2 .img-thumbnail{
-    height: 370px;
+    height:300px;
  }
+
+.img-thumbnail, .card-img-top{
+    background-size: cover;
+}

@@ -1,4 +1,4 @@
-<%= form_tag(movies_path, :method => "get", class:"form-group row") do %>
+<!--<%= form_tag(movies_path, :method => "get", class:"form-group row") do %>
   <div class="col-xs-2 d-lg-flex d-sm-block d-md-block justify-content-between align-items-center">
     <% if current_user.user_type == "Admin" %>
       <%= link_to"New Movie", new_movie_path, class: 'btn btn-shadow text-white mt-3'%>
@@ -62,4 +62,82 @@
       </div>
     </div>
   <% end %>
+</div>-->
+
+<%= form_tag(movies_path, :method => "get", class:"form-group row") do %>
+  <div class="col-xs-2 d-lg-flex d-sm-block d-md-block justify-content-between align-items-center">
+    <% if current_user.user_type == "Admin" %>
+      <%= link_to"New Movie", new_movie_path, class: 'btn btn-shadow text-white mt-3'%>
+    <% end %>
+    <div class="d-lg-flex justify-content-center position-relative mt-3">
+      <%= text_field_tag :search, params[:search], :placeholder => "Search",  class: "search-box col-xs-2 mx-2 rounded-pill" %>
+        <%= button_tag type:'submit', class: "btn border-none custom-search" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-0 mt-2">
+  <% @movies.each do |movie|%>
+  
+    <div class="row g-0 mt-2">
+            
+              <div class="col-md-6">
+                <div class="card text-center my-2 card-shadow" >
+                    <% movie.poster_img.each do |poster_img| %>
+                      <%= link_to image_tag(poster_img, style: "width:100%;", class: "img-thumbnail"),movie %>
+                    <% end %>
+                </div>
+              </div>
+
+              <div class="col-md-5 border-end">
+                <div class="card-body text-start" style=" height: 250px;">
+                  <h5 class="card-title">Title : <%= movie.title %></h5>
+                  <p class="card-text" style="font-size:14px;">Category : <%= movie.category %></p>
+                  <p class="card-text" style="font-size:14px;">Price : $<%= movie.price %></p>
+                  <p class="card-text" style="font-size:14px;">
+                  <%= link_to 'More Detail', movie, class: "btn btn-sm btn-outline-dark" %>
+                  
+                  <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i>
+                
+                  <% if current_user.user_type == "Admin" %>
+                    <%= link_to 'Edit', edit_movie_path(movie), :class=>'btn button1 button2 btn-sm' %> |
+                    <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'btn button1 button2 btn-sm' %>
+                  <% end %>
+                </div>
+
+                <div class="card-footer d-flex justify-content-between pe-2">
+                  <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-order" %> 
+                  <% favourite = current_user.favourites.find_by(movie: movie)%>
+                    <% if favourite.nil? %>
+                        <%= button_to  "Favourite", favourites_path, params: { favourite: {movie_id: movie.id}}, method: :post, class: "btn btn-outline-success btn-sm" %> <br/>
+                    <% else %>
+                        <%= button_to "Unfavourite", favourite_path(favourite), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                    <% end %>
+                </div>
+              </div> 
+      
+            
+    </div>
+
+    <div class="modal fade" id="deletepost_<%= movie.id %>">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Movie Delete Confirmation</h5>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete?</p>
+          </div>
+          <div class="modal-footer">
+              <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+              <%= button_to 'Delete', movie_path(movie), method: :delete, :class => 'btn btn-danger ' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+
