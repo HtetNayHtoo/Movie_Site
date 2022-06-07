@@ -2,38 +2,6 @@
 
 <h1>Movie Details</h1>
 
-<!---<table>
-  <thead>
-    <tr>
-      <th>Release date</th>
-      <th>Director</th>
-      <th>Trailer link</th>
-      <th>Cast</th>
-      <th>Rotten tomatoe</th>
-      <th>Imdb</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movie_details.each do |movie_detail| %>
-      <tr>
-        <td><%= movie_detail.release_date %></td>
-        <td><%= movie_detail.director %></td>
-        <td><%= movie_detail.trailer_link %></td>
-        <td><%= movie_detail.cast %></td>
-        <td><%= movie_detail.rotten_tomatoe %></td>
-        <td><%= movie_detail.imdb %></td>
-        <td><%= link_to 'Show', movie_detail %></td>
-        <td><%= link_to 'Edit', edit_movie_detail_path(movie_detail) %></td>
-        <td><%= link_to 'Destroy', movie_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>-->
-
 <% @movie_details.each do |movie_detail| %>
 <div class="media">
   <% movie_detail.movie.poster_img.each do |poster_img| %>

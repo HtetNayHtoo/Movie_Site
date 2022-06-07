@@ -1,130 +1,10 @@
-<!--<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @movie.price %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @movie.category %>
-</p>
-
-<p>
-  <strong>Poster img:</strong>
-  <% @movie.poster_img.each do |poster_img| %>
-    <div>
-      <%= link_to poster_img.filename, poster_img %>
-      <%= image_tag(poster_img) %>
-    </div>
-  <% end %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>-->
-
-<!--<div class="media">
-  <% @movie.poster_img.each do |poster_img| %>
-    <%= image_tag(poster_img, class:"align-self-start mr-3", width: "300px", height: "300px" ) %><br/>
-  <% end %>
-  <!---<%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <div class="media-body">
-    <h5 class="mt-0"> <%= @movie.title %> </h5>
-    
-    <p>Desc: <%= @movie.movie_detail.desc%></p>
-    <p>Release Date : <%= @movie.movie_detail.release_date %></p>
-    <p>Cast : <%= @movie.movie_detail.cast%></p>
-    <p>Director : <%= @movie.movie_detail.director%> </p>
-    <div>
-      <% @movie.movie_detail.imdb.to_i.times do  %>
-        <span class="fas fa-star star-icon2" style="color:yellow"></span>
-      <% end %>
-    </div><br/>
-    <p class="fs-1"><i class="fa-solid fa-tomato" style="color:red"></i><%= @movie.movie_detail.rotten_tomatoe %></p>
-    <p>Trailer Link : <%= @movie.movie_detail.trailer_link %> </p>
-    
-    <p>
-      <strong style="font-size:18px;">Comments:</strong>
-      <%= render @movie.comments.order(id: :desc) %>
-      <%= render partial: 'comments/cform', locals: {movie: @movie } %>
-    </p>
-    <%= link_to 'Back', movies_path %>
-  </div>
-</div>-->
-
-
-<!--<div class="panel panel-primary">
-  <div class="panel-body">
-    <div class="row">
-       <div class="col-md-4">
-       <% @movie.poster_img.each do |poster_img| %>
-          <%= image_tag(poster_img,  style: "height:350px;", class: "img-thumbnail") %>
-        <% end %>
-       </div>
-       <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td><h5>Title:</h5></td>
-              <td><h5><%= @movie.title %></h5></td>
-            </tr>
-            <tr>
-              <td><strong>Description:</strong></td>
-              <td><%= @movie.movie_detail.desc%></td>
-            </tr>
-            <tr>
-              <td><strong>Director:</strong></td>
-              <td><%= @movie.movie_detail.director%></td>
-            </tr>
-            <tr>
-              <td><strong>Cast:</strong></td>
-              <td><%= @movie.movie_detail.cast%></td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                    <% @movie.movie_detail.imdb.to_i.times do  %>
-                    <span class="fas fa-star star-icon2" style="color:yellow"></span>
-                    <% end %>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <p class="fs-1"><i class="fa-solid fa-tomato" style="color:red"></i>
-              <%= @movie.movie_detail.rotten_tomatoe %></p>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>Trailer:</strong></td>
-              <td><%= @movie.movie_detail.trailer_link %></td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          <strong style="font-size:18px;">Comments:</strong>
-          <%= render @movie.comments.order(id: :desc) %>
-          <%= render partial: 'comments/cform', locals: {movie: @movie } %>
-        </p>
-        <%= link_to 'Back', movies_path %>
-       </div>
-    </div>
-  </div>
-</div>-->
-
-
-
-<div class="card mb-3" style="max-width: 100%;">
-  <div class="d-lg-flex d-sm-block justify-content-evenly g-0">
-    <div class="col-md-4" >
+<div class="row">
+    <div class="col-12 col-lg-4 col-md-5" >
       <% @movie.poster_img.each do |poster_img| %>
-          <%= image_tag(poster_img, class: "img-thumbnail", style: "height: 400px;") %>
+          <%= image_tag(poster_img, class: "img-thumbnail", style: "height: 400px;width:100%") %>
         <% end %>
     </div>
-    <div class="col-md-4">
+    <div class="col-0 col-lg-6 col-md-7">
       <div class="card-body">
 
       <table class="table table-borderless">
@@ -167,40 +47,16 @@
           </tr>
         </tbody>
       </table>
-
-        <!--<h5 class="card-title"><strong> Title : </strong><%= @movie.title %></h5>
-        <p class="card-text"><strong>Description : </strong><%= @movie.movie_detail.desc%>.</p>
-        <p class="card-text"><strong>Director : </strong><%= @movie.movie_detail.director%></p>
-        <p class="card-text"><strong>Cast : </strong><%= @movie.movie_detail.cast%></p>
-        <p class="card-text">
-          <div>
-              <% @movie.movie_detail.imdb.to_i.times do  %>
-              <span class="fas fa-star star-icon2" style="color:yellow"></span>
-              <% end %>
-          </div>
-        </p>
-        <p class="card-text fs-1 text-danger">
-          <i class="fa-solid fa-tomato" style="color:red"></i>
-          <%= @movie.movie_detail.rotten_tomatoe %>
-        </p>
-        <%# <div style="width:200px; height:200px">
-       
-        </div> %>
-        <p class="card-text"><strong>Trailer : </strong><%= @movie.movie_detail.trailer_link %></p>-->
       </div>
     </div>
   </div>
-</div>
-<div style="max-width: 100%;">
-  <div class="row g-0">
-    <h4>Trailer</h4>
-    <iframe width="100%" height="300" src="https://www.youtube.com/embed/<%= @movie.movie_detail.trailer_link.split('/').last %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="row">
+    <div class="col">
+      <a href="https://www.youtube.com/embed/<%= @movie.movie_detail.trailer_link.split('/').last %>" class="trailer btn-shadow">Show Trailer</a>
+    </div>
   </div>
-<div class="mt-3">
-  <p>
-    <h4>Comments:</h4>
-    <%= render @movie.comments.order(id: :desc) %>
-    <%= render partial: 'comments/cform', locals: {movie: @movie } %>
-  </p>
-  <%= link_to 'Back', movies_path, class:"btn btn-sm btn-dark"%>
+<div class="row mt-5">
+  <h4>Comments:</h4>
+  <%= render @movie.comments.order(id: :desc) %>
+  <%= render partial: 'comments/cform', locals: {movie: @movie } %>
 </div>
