@@ -105,8 +105,8 @@
                   <i class="fas fa-star star-icon1"><%= movie.favourites.count %></i><br/>
                 
                   <% if current_user.user_type == "Admin" %>
-                    <%= link_to 'Edit', edit_movie_path(movie), :class=>'', :style=>'text-decoration: none; color:black;'%> |
-                    <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}",:class=>'', :style=>'text-decoration: none; color:black;' %>
+                    <%= link_to 'Edit', edit_movie_path(movie), :style=>'text-decoration: none; color:black;'%> |
+                    <%= link_to 'Delete', 'movie', "data-toggle"=>"modal", "data-target" => "#deletepost_#{movie.id}", :style=>'text-decoration: none; color:black;' %>
                   <% end %>
                 </div>
 

@@ -15,7 +15,7 @@ class MovieRepository
         def updateMovie(movie, movie_params, movie_detail_params)
             @update_movie = movie.update(movie_params)
             if @update_movie
-                @movie.movie_detail.update(movie_detail_params) 
+                movie.movie_detail.update(movie_detail_params) 
             end
         end
 
