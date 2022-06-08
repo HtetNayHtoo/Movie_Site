@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+  before_action :set_no_cache
   before_action :movie
   
   helper_method :current_user

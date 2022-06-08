@@ -1,4 +1,5 @@
-<div class="table-responsive-sm table-responsive-md mt-5">
+<h4 class="display-6 mt-3">Order List</h4>
+<div class="table-responsive-sm table-responsive-md mt-3">
   <table class="table table-striped">
     <thead class="thead-color">
       <tr>
@@ -63,7 +64,12 @@
 
 <br>
 
+<%== pagy_bootstrap_nav(@pagy) %>
+
+<br>
 <%= link_to 'New Order', movies_path, class: "btn btn-shadow text-white" %> <br/><br/>
+
+
 
 <% if current_user.user_type == "Admin" %>
 

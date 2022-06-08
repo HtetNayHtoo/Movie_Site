@@ -13,20 +13,10 @@ class OrdersController < ApplicationController
     group by(`category`)";
     @arrays = ActiveRecord::Base.connection.execute(@sql).to_h;
 
-    
-
-    # SELECT 
-    # movies.category as `category`,
-    # COUNT(orders.id) as `count`
-    # FROM movie.orders 
-    # INNER JOIN movie.movies ON movies.id= orders.movie_id
-    # group by(`category`)
-
-
     if current_user.user_type == "Admin"
-       @orders = OrderService.index
+       @pagy,@orders = pagy(OrderService.index,items: 4)
     else
-      @orders = current_user.orders
+      @pagy,@orders = pagy(current_user.orders,items: 4)
       OrderMailer.order_list(current_user.email,@orders).deliver_now
       
     end
