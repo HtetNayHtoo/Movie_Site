@@ -8,16 +8,29 @@
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <% if current_user.present? %>
+    <!--<div class="col my-2">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>-->
+
+    <div class="col">
+      <%= form.label :phone %>
+      <%= form.number_field :phone, class: "form-control" %>
+    </div>
+
     <div class="col my-2">
-      <%= form.label :user_type %>
-      <%= form.select :user_type, [['Please select a user', nil], 'Admin', 'User'], {}, {class: 'form-control'}  %>
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "form-control" %>
     </div>
-    <% else %>
-    <div class="d-none">
-      <%= form.select :user_type, ['User'], {}, {class: 'form-control'}  %>
+
+    <div class="col mb-3">
+      <%= form.label :dob %>
+      <%= form.date_field :dob, class: "form-control" %>
     </div>
-  <% end %>
+
+    <!--<div>
+    <%= form.submit class: "btn btn-primary" %>
+    </div>-->
 
   <div class="col">
     <% if user.errors[:email].any? %>
@@ -45,7 +58,7 @@
     <% end %>
   </div>
 
-  <div class="col">
+  <!--<div class="col">
     <%= form.label :phone %>
     <%= form.number_field :phone, class: "form-control" %>
   </div>
@@ -58,7 +71,7 @@
   <div class="col mb-3">
     <%= form.label :dob %>
     <%= form.date_field :dob, class: "form-control" %>
-  </div>
+  </div>-->
 
   <div class="">
   <% if current_user %>

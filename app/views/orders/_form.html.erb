@@ -14,9 +14,11 @@
   <div class="profile-center">
 
     <div class="col">
+      <div>
       <% current_movie.poster_img.each do |poster_img| %>
-        <%= image_tag(poster_img, height: "200px", class:"card-img-top") %>
+        <%= image_tag(poster_img, class:"card-img-top") %>
       <% end %>
+      </div>
     </div>
 
     <div class="col my-3">
