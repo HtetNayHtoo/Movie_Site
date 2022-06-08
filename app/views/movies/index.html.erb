@@ -110,7 +110,7 @@
                   <% end %>
                 </div>
 
-                <div class="card-footer d-flex justify-content-between pe-2">
+                <div class="card-footer d-flex justify-content-between">
                   <%= link_to 'Order', order_movie_path(:movie_id => movie.id) , class: "btn btn-sm btn-order" %> 
                   <% favourite = current_user.favourites.find_by(movie: movie)%>
                     <% if favourite.nil? %>
