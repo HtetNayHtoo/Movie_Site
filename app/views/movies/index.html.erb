@@ -83,7 +83,7 @@
   
     <div class="row g-0 mt-2">
             
-              <div class="col-md-6">
+              <div class="col-md-6 border border-2 border-end-0"">
                 <div class="card text-center my-2 card-shadow" >
                     <% movie.poster_img.each do |poster_img| %>
                       <%= link_to image_tag(poster_img, style: "width:100%;", class: "img-thumbnail"),movie %>
@@ -91,7 +91,7 @@
                 </div>
               </div>
 
-              <div class="col-md-5 border-end">
+              <div class="col-md-5 border border-2 border-start-0">
                 <div class="card-body text-start" style=" height: 250px;">
                   <h5 class="card-title">Title : <%= movie.title %></h5>
                   <p class="card-text" style="font-size:14px;">Category : <%= movie.category %></p>

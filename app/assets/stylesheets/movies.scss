@@ -53,6 +53,15 @@
     height:300px;
  }
 
-.img-thumbnail, .card-img-top{
+.img-thumbnail{
     background-size: cover;
 }
+
+.row-cols-1 .col .col-md-6{
+    border: none;
+}
+
+.col-lg-4 .img-thumbnail{
+    height: 480px;
+}
+

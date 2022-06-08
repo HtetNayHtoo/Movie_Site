@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12 col-lg-4 col-md-5" >
       <% @movie.poster_img.each do |poster_img| %>
-          <%= image_tag(poster_img, class: "img-thumbnail", style: "height: 500px;width:100%") %>
+          <%= image_tag(poster_img, class: "img-thumbnail") %>
         <% end %>
     </div>
     <div class="col-0 col-lg-6 col-md-7">
