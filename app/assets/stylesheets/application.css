@@ -214,9 +214,9 @@ textarea {
 
 .page-item.active .page-link {
     z-index: 3;
-    background-color: #1F4976!important;
+    background-color: #1F4976 !important;
     color: #fff;
-    border-color: #1F4976!important;
+    border-color: #1F4976 !important;
 }
 
 /*  Ipad  */

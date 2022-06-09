@@ -1,5 +1,3 @@
-
-
 <%= form_with(model: @movie) do |form| %>  
   <% if @movie.errors.any? %>
     <div id="error_explanation">
@@ -15,88 +13,85 @@
 
   <div class="container h-100">
     <div class="profile-center">
-    <h1 class="text-color">Editing</h1>
-        <div class="field form-group col mb-3">
-            <%= form.label :title %>
-            <%= form.text_field :title , class:"form-control"%>
-        </div>
+      <h1 class="text-color">Editing</h1>
+      <div class="field form-group col mb-3">
+        <%= form.label :title %>
+        <%= form.text_field :title , class:"form-control"%>
+      </div>
 
-        <div class="field form-group cpl mb-3">
-            <%= form.label :price %>
-            <%= form.number_field :price, class:"form-control" %>
-        </div>
+      <div class="field form-group cpl mb-3">
+        <%= form.label :price %>
+        <%= form.number_field :price, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :category %>
-            <%= form.text_field :category , class:"form-control"%>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :category %>
+        <%= form.text_field :category , class:"form-control"%>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :director %>
-            <%= form.text_field :director, value: @movie.movie_detail.director, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :director %>
+        <%= form.text_field :director, value: @movie.movie_detail.director, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :description %>
-            <%= form.text_area :desc, value: @movie.movie_detail.desc, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :description %>
+        <%= form.text_area :desc, value: @movie.movie_detail.desc, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :trailer_link %>
-            <%= form.text_field :trailer_link, value: @movie.movie_detail.trailer_link, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :trailer_link %>
+        <%= form.text_field :trailer_link, value: @movie.movie_detail.trailer_link, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :cast %>
-            <%= form.text_field :cast, value: @movie.movie_detail.cast, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :cast %>
+        <%= form.text_field :cast, value: @movie.movie_detail.cast, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :rotten_tomatoe %>
-            <%= form.text_field :rotten_tomatoe, value: @movie.movie_detail.rotten_tomatoe, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :rotten_tomatoe %>
+        <%= form.text_field :rotten_tomatoe, value: @movie.movie_detail.rotten_tomatoe, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3 ">
-            <%= form.label :imdb %>
-            <%= form.text_field :imdb, value: @movie.movie_detail.imdb, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3 ">
+        <%= form.label :imdb %>
+        <%= form.text_field :imdb, value: @movie.movie_detail.imdb, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :poster_img %>
-            <%= form.file_field :poster_img, multiple: true, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :poster_img %>
+        <%= form.file_field :poster_img, multiple: true, class:"form-control" %>
+      </div>
 
-        <div class="field form-group col mb-3">
-            <%= form.label :release_date %>
-            <%= form.date_field :release_date, value: @movie.movie_detail.release_date, class:"form-control" %>
-        </div>
+      <div class="field form-group col mb-3">
+        <%= form.label :release_date %>
+        <%= form.date_field :release_date, value: @movie.movie_detail.release_date, class:"form-control" %>
+      </div>
 
-        <div class="actions form-group">
-            <!--<%= form.submit class:"btn btn-primary" %>-->
-            <%= link_to 'Back', movies_path, class:"btn btn-dark" %>
-            <%= link_to 'Update', 'movie', "data-toggle"=>"modal", "data-target" => "#editpost_#{@movie.id}", :class=>'btn btn-shadow text-white ms-2'%>
-            <!--<%= link_to 'Create Movie', 'new_movie_path', "data-toggle"=>"modal", "data-target" => "#confirmMovieModal",:class=>'btn button1 button2' %>-->
-        </div>
+      <div class="actions form-group">
+        <%= link_to 'Back', movies_path, class:"btn btn-dark" %>
+        <%= link_to 'Update', 'movie', "data-toggle"=>"modal", "data-target" => "#editpost_#{@movie.id}", :class=>'btn btn-shadow text-white ms-2'%>
+      </div>
     </div>
   </div>
 
   <div class="modal fade" id="editpost_<%= @movie.id %>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Update Confirmation</h5>
-                </div>
-                <div class="modal-body">
-                    <p>Are You Sure!</p><!--update-->
-                </div>
-                <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
-                    <%= form.submit class:"btn btn-shadow text-white" %>
-                    <!--<%= button_to 'Update',  movie_path(@movie), :class => 'btn btn-primary' %>-->
-                </div>
-            </div>
-        </div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Update Confirmation</h5>
+          </div>
+          <div class="modal-body">
+            <p>Are You Sure!</p><!--update-->
+          </div>
+          <div class="modal-footer">
+            <a href="#" data-dismiss="modal" class="btn btn-outline-dark">Cancel</a>
+            <%= form.submit class:"btn btn-shadow text-white" %>
+          </div>
+      </div>
     </div>
+  </div>
 
 <% end %>
 
