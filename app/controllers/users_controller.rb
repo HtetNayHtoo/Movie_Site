@@ -32,7 +32,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if isSave
-        format.html { redirect_to login_path, notice: "User was successfully created." }
+        if current_user.nil?
+          format.html { redirect_to login_path, notice: "User was successfully created." }
+        else
+          format.html { redirect_to users_path, notice: "User was successfully created." }
+        end
         format.json { render :show, status: :created, location: @user }
       else
         flash.now[:notice] = "Please enter your password"
